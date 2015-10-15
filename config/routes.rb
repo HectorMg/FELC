@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
 
-  get 'static_pages/company'
-
-  get 'static_pages/schedule'
-
-  get 'static_pages/manual'
+  root               'landing_page#landing'
+  get 'home'      => 'static_pages#home'
+  get 'company'   => 'static_pages#company'
+  get 'schedule'  => 'static_pages#schedule'
+  get 'manual'    => 'static_pages#manual'
+  get 'signup'    => 'users#new'
 
 end
