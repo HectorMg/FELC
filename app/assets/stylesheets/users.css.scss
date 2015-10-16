@@ -1,35 +1,9 @@
-// Place all the styles related to the LandingPage controller here.
+// Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-/*
- * Globals
- */
-
- /* Colors */
-
- $peter-river: #3498db;
-
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #333;
-}
-
-/* Custom default button */
-
-.btn-primary{
-  background-color: $peter-river;
-}
-
-
-/*
- * Base structure
- */
 
 html,
 body {
@@ -38,6 +12,7 @@ body {
 }
 body {
   background-image: url('logo.jpg');
+  background-size: 40%;
   background-repeat:no-repeat;
   background-attachment:fixed;
   background-position: 50% 25%;
@@ -46,7 +21,6 @@ body {
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
   box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
-
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
@@ -72,7 +46,6 @@ body {
     color: #333;
   }
 }
-
 
 /*
  * Header
@@ -114,9 +87,9 @@ body {
   }
   .masthead-nav {
     float: right;
+    margin-right: 280px;
   }
 }
-
 
 /*
  * Cover
@@ -130,17 +103,6 @@ body {
   padding: 10px 20px;
   font-weight: bold;
 }
-
-
-/*
- * Footer
- */
-
-.mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
-}
-
 
 /*
  * Affix and center
@@ -168,10 +130,37 @@ body {
   }
 }
 
-@media (min-width: 992px) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 700px;
-  }
+.form-signin {
+  width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

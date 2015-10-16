@@ -60,13 +60,8 @@ p {
 
 #logo {
   width: 150px;
-  height: 50px;
+  height: auto;
   margin-top: 10px;
-  margin-bottom: -10px;
-  background-image: image-url('corner_logo.gif');
-  margin-right: 0px;
-  background-size: contain;
-  background-repeat: no-repeat;
   display: inline-block;
   &:hover {
     color: #fff;

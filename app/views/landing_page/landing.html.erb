@@ -1,2 +1,36 @@
-<h1>LandingPage#landing</h1>
-<p>Find me in app/views/landing_page/landing.html.erb</p>
+<div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><%= link_to 'Home', home_path %></li>
+                  <li><%= link_to 'Log In', signup_path %></li>
+                  <li><%= link_to 'Register', signup_path %></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="inner cover">
+            <p class="lead">
+              With a focus on young people in mind and a creative
+              idea that developed years prior, Helms Center President John Dodd founded FELC
+              in 1995 to teach young people about free enterprise and the principles which support it.
+             </p>
+            <p class="lead">
+              <%= link_to 'Learn More', home_path, :class => "btn btn-lg btn-primary" %>
+            </p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>  Developed by MgDev - © Free Enterprise Leadership Challenge 2015</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
