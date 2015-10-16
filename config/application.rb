@@ -9,6 +9,6 @@ Bundler.require(*Rails.groups)
 module FELC
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
-    config.serve_static_assets = true
+    config.serve_static_files = true 
   end
 end
