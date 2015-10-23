@@ -1,17 +1,55 @@
 <% provide(:title, 'Sign Up') %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'users', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+    <div class="site-wrapper">
+      <% flash.each do |message_type, message| %>
+       <div class="alert alert-<%= message_type %>"><%= message %></div>
+     <% end %>
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><%= link_to 'Home', home_path %></li>
+                  <li><%= link_to 'Log In', home_path %></li>
+                  <li><%= link_to 'Register', signup_path %></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        <div class="inner cover">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <%= form_for(@user, :html => {:class => "form-signin"}) do |f| %>
 
-<div class="container">
- <form class="form-signin">
-   <h2 class="form-signin-heading">Please sign in</h2>
-   <label for="inputEmail" class="sr-only">Email address</label>
-   <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-   <label for="inputPassword" class="sr-only">Password</label>
-   <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-   <div class="checkbox">
-     <label>
-       <input type="checkbox" value="remember-me"> Remember me
-     </label>
-   </div>
-   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
- </form>
-</div>
+                <h2 class= "form-signin-header">Sign Up</h2>
+                <%= render 'shared/error_messages' %>
+
+                <%= f.text_field :name, :class => "form-control", :placeholder => "Name" %>
+                <%= f.email_field :email, :class => "form-control", :placeholder => "Email" %>
+                <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+                <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Confirm Password" %>
+                <%= f.submit "Create my account", class: "btn btn-primary sign-up-button" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>  Developed by MgDev - © Free Enterprise Leadership Challenge 2015</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
