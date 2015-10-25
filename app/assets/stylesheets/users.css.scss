@@ -195,6 +195,18 @@ input {
   margin-top: 10px;
 }
 
+.checkbox {
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
 #error_explanation {
   color: red;
   ul {

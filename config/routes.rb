@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'schedule'  => 'static_pages#schedule'
   get 'manual'    => 'static_pages#manual'
   get 'signup'    => 'users#new'
-
+  get 'login'     => 'sessions#new'
+  post 'login'     => 'sessions#create'
+  delete 'logout'     => 'sessions#destroy'
   resources :users
 
 end
