@@ -9,7 +9,13 @@
         <% else %>
           <h3 class="text-muted">Company Name</h3>
         <% end %>
-          <span class="text-muted"><%= c.market + " #{c.numerator}" %></span>
+        <h4 ><%= c.market + " #{c.numerator}" %></h4>
+        <p class="text-muted">Balance:</p>
+        <% if c.balance >= 0 %>
+          <p class="green-balance">$<%= c.balance %></p>
+        <% else %>
+          <p class="red-balance">-$<%= (c.balance*-1) %></p>
+        <% end %>
       </div>
     <% end %>
   </div>
