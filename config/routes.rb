@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'companies/index'
+
+  get 'companies/show'
+
   root                  'landing_page#landing'
   get 'home'         => 'static_pages#home'
   get 'company'      => 'static_pages#company'
