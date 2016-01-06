@@ -1,9 +1,16 @@
 // Place all the styles related to the BankSystem controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 // Colors
 
 $peter-river: #3498db;
+$light-gray: #fafafa;
+$gallery: #eeeeee;
+$silver: #bdc3c7;
+$asbestos: #7f8c8d;
+$clouds: #ecf0f1;
 
 .green-balance{
   margin-top: -15px;
@@ -17,6 +24,19 @@ $peter-river: #3498db;
   text-align: center;
 }
 
+// Accounts
+
+.company-card-wrapper{
+  padding: 5px;
+}
+
+.company-card-inner{
+  padding: 5px;
+  border: 1px solid $gallery;
+  background-color: $light-gray;
+}
+// Transactions
+
 .general-transaction-area{
   h2{
     font-size: 2.3em;
@@ -24,7 +44,9 @@ $peter-river: #3498db;
   }
 }
 
+// Bank General
 .bank-table{
   height: 50vh;
   overflow: scroll;
+  border: 1px solid $silver;
 }
