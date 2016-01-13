@@ -10,7 +10,9 @@
           <% else %>
             <h3 class="text-muted">Company Name</h3>
           <% end %>
-          <h4 ><%= c.market + " #{c.numerator}" %></h4>
+          <% if c.market != nil && c.numerator != nil %>
+            <h4 ><%= c.market + " #{c.numerator}" %></h4>
+          <% end %>
           <p class="text-muted">Balance:</p>
           <% if c.balance >= 0 %>
             <p class="green-balance">$<%= c.balance %></p>

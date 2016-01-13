@@ -1,0 +1,42 @@
+<% provide(:title, "New Contract") %>
+<div class="general-bank-area">
+  <h2>Inter-Company Transaction</h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"> Contract Details</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Customer:</th>
+            <th>Provider:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <%= form_for(@transaction) do |t| %>
+            <td><%= select_tag(:transaction, options_from_collection_for_select(CompanyAccount.all, :id, :name),
+                                             :class => "select-box-ict", :prompt => "Select customer...") %></td>
+            <td><%= select_tag(:transaction, options_from_collection_for_select(CompanyAccount.all, :id, :name),
+                                             :class => "select-box-ict", :prompt => "Select provider...")%></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Purpose of Contract</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= text_field_tag(:transaction, :description, :class => "contact-text-field")%></td>
+          </tr>
+        </tbody>
+            <% end %>
+      </table>
+    </div>
+  </div>
+
+</div>

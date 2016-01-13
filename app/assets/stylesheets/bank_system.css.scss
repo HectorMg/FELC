@@ -37,7 +37,7 @@ $clouds: #ecf0f1;
 }
 // Transactions
 
-.general-transaction-area{
+.general-bank-area{
   h2{
     font-size: 2.3em;
     color: $peter-river;
@@ -50,6 +50,17 @@ $clouds: #ecf0f1;
 
 .transaction-text-cell{
   width: 40%;
+}
+
+//Contracts
+
+.select-box-ict{
+  width: 100%;
+}
+
+.contract-text-field{
+  width: 100%;
+  height: 100px;
 }
 
 // Bank General

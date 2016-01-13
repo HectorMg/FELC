@@ -3,7 +3,9 @@
 <!-- Title -->
   <% if @company_account.name != nil %>
     <h1><%= @company_account.name + " Corporate Account" %></h1>
-    <h2><%= base_company(@company_account) %></h2>
+    <% if base_company(@company_account) != nil %>
+      <h2><%= base_company(@company_account) %></h2>
+    <% end %>
   <% else %>
     <h1><%= base_company(@company_account) %></h1>
   <% end %>
@@ -27,7 +29,7 @@
       <table class="table table-striped">
         <tbody>
           <%
-            if @transactions.present?
+            if @transactions != nil
               @transactions.reverse_each do |t|
             %>
             <tr>
