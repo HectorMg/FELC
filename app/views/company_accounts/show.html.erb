@@ -27,7 +27,7 @@
       <table class="table table-striped">
         <tbody>
           <%
-            if @transactions.any?
+            if @transactions.present?
               @transactions.reverse_each do |t|
             %>
             <tr>
