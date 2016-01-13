@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106145048) do
+ActiveRecord::Schema.define(version: 20160106182359) do
 
-  create_table "companies", force: :cascade do |t|
+  create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
     t.string   "market"
     t.integer  "numerator"
@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(version: 20160106145048) do
   create_table "staffs", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "company_account_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.text     "bio"
   end
 
-  add_index "staffs", ["company_id"], name: "index_staffs_on_company_id"
-  add_index "staffs", ["user_id", "company_id", "created_at"], name: "index_staffs_on_user_id_and_company_id_and_created_at"
+  add_index "staffs", ["company_account_id"], name: "index_staffs_on_company_account_id"
+  add_index "staffs", ["user_id", "company_account_id", "created_at"], name: "index_staffs_on_user_id_and_company_account_id_and_created_at"
   add_index "staffs", ["user_id"], name: "index_staffs_on_user_id"
 
   create_table "transactions", force: :cascade do |t|
@@ -44,24 +44,26 @@ ActiveRecord::Schema.define(version: 20160106145048) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "transactions", ["provider_id", "customer_id"], name: "index_transactions_on_provider_id_and_customer_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.boolean  "admin",             default: false
+    t.boolean  "admin",              default: false
     t.string   "activation_digest"
-    t.boolean  "activated",         default: false
+    t.boolean  "activated",          default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-    t.integer  "company_id"
+    t.integer  "company_account_id"
   end
 
-  add_index "users", ["company_id", "created_at"], name: "index_users_on_company_id_and_created_at"
-  add_index "users", ["company_id"], name: "index_users_on_company_id"
+  add_index "users", ["company_account_id", "created_at"], name: "index_users_on_company_account_id_and_created_at"
+  add_index "users", ["company_account_id"], name: "index_users_on_company_account_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  user_id: 
-  company_id: 
+  user_id:
+  company_account_id: 
 
 two:
   name: MyString
-  user_id: 
-  company_id: 
+  user_id:
+  company_account_id: 

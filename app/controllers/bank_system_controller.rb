@@ -1,7 +1,7 @@
 class BankSystemController < ApplicationController
 
   def index
-    @companies = Company.all
+    @company_accounts = CompanyAccount.all
   end
 
   def transactions

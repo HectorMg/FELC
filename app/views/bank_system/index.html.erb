@@ -1,12 +1,12 @@
 <% provide(:title, "Bank") %>
 <!-- Companies -->
   <div class="row placeholders">
-    <% @companies.each do |c| %>
+    <% @company_accounts.each do |c| %>
       <div class="col-xs-6 col-sm-3 placeholder company-card-wrapper">
         <div class="company-card-inner">
           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
           <% if c.name != nil %>
-            <h3><%= link_to c.name, company_path(c) %></h3>
+            <h3><%= link_to c.name, company_account_path(c) %></h3>
           <% else %>
             <h3 class="text-muted">Company Name</h3>
           <% end %>

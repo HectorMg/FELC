@@ -6,7 +6,7 @@ Rails.application.config.assets.precompile += %w( static_pages.css )
 Rails.application.config.assets.precompile += %w( landing_page.css )
 Rails.application.config.assets.precompile += %w( users.css )
 Rails.application.config.assets.precompile += %w( dashboard.css )
-Rails.application.config.assets.precompile += %w( companies.css )
+Rails.application.config.assets.precompile += %w( company_accounts.css )
 Rails.application.config.assets.precompile += %w( bank_system.css )
 
 # Add additional assets to the asset load path

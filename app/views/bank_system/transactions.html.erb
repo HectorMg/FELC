@@ -4,11 +4,11 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Customer</th>
-        <th>Provider</th>
-        <th>Amount</th>
+        <th class="transaction-integer-cell">ID</th>
+        <th class="transaction-text-cell">Description</th>
+        <th class="transaction-integer-cell">Customer</th>
+        <th class="transaction-integer-cell">Provider</th>
+        <th class="transaction-integer-cell">Amount</th>
       </tr>
     </thead>
   </table>
@@ -17,11 +17,17 @@
       <tbody>
         <% @transactions.reverse_each do |t|  %>
           <tr>
-            <td><%= t.id %></td>
-            <td><%= t.description %></td>
-            <td><%= t.customer_id %></td>
-            <td><%= t.provider_id %></td>
-            <td>$<%= number_with_precision(t.amount, :precision => 2) %></td>
+            <td class="transaction-integer-cell"><%= t.id %></td>
+            <td class="transaction-text-cell">
+              <% if t.description.length > 40 %>
+                <%= t.description[0, 40] + "..." %>
+              <% else %>
+                <%= t.description %>
+              <% end %>
+          </td>
+            <td class="transaction-integer-cell"><%= base_company_from_id(t.customer_id) %></td>
+            <td class="transaction-integer-cell"><%= base_company_from_id(t.provider_id) %></td>
+            <td class="transaction-integer-cell">$<%= number_with_precision(t.amount, :precision => 2) %></td>
           </tr>
         <% end %>
       </tbody>

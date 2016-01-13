@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get 'transactions' => 'bank_system#transactions'
   get 'properties'   => 'bank_system#properties'
   resources :users
-  resources :companies
+  resources :company_accounts
 end
