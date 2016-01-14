@@ -11,8 +11,5 @@ class BankSystemController < ApplicationController
   def properties
   end
 
-  def new_contract
-    @transaction = Transaction.new()
-  end
 
 end
