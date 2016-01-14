@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
   end
 
   def new_copyright
+    @transaction = Transaction.new
   end
 
   def stock_purchase
@@ -17,4 +18,21 @@ class TransactionsController < ApplicationController
 
   def withdraw
   end
+
+  def create
+    @transaction = Transaction.new(transaction_params)
+    if @transaction.save
+      render 'new_contract'
+    else
+      render 'new_contract'
+    end
+  end
+
+  private
+
+    def transaction_params
+      params.require(:transaction).permit(:description, :provider_id, :customer_id,
+                                          :provider_role, :customer_role, :provider_consequence,
+                                          :customer_consequence, :valid_through, :amount)
+    end
 end

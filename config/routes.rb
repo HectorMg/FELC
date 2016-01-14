@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get 'companies/show'
   resources :users
   resources :company_accounts
+  resources :transactions
 end

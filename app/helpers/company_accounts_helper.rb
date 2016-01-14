@@ -7,7 +7,11 @@ module CompanyAccountsHelper
     end
   end
   def base_company_from_id(company_account_id)
-    company_account = CompanyAccount.find(company_account_id)
-    base_company = company_account.market + " #{company_account.numerator}"
+    if company_account_id != nil
+      company_account = CompanyAccount.find(company_account_id)
+      base_company = company_account.market + " #{company_account.numerator}"
+    else
+      company_account = nil
+    end
   end
 end

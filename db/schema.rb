@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114005606) do
+ActiveRecord::Schema.define(version: 20160114034449) do
 
   create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
@@ -46,8 +46,7 @@ ActiveRecord::Schema.define(version: 20160114005606) do
     t.text     "provider_role"
     t.text     "customer_consequence"
     t.text     "provider_consequence"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.text     "valid_through"
   end
 
   add_index "transactions", ["customer_id"], name: "index_transactions_on_customer_id"

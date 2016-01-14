@@ -64,6 +64,27 @@ $clouds: #ecf0f1;
   line-height: 1;
 }
 
+.contract-role-field{
+  width: 90%;
+  height: 50px;
+  line-height: 1;
+}
+
+.contract-valid-through-field{
+  width: 60%;
+  height: 50px;
+  line-height: 1;
+}
+
+.contract-amount-field{
+  width: 50%;
+  line-height: 1;
+}
+
+.submit-transaction{
+  width: 100%;
+}
+
 // Bank General
 .bank-table{
   height: 50vh;

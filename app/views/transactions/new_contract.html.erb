@@ -16,10 +16,10 @@
         <tbody>
           <tr>
             <%= form_for(@transaction) do |t| %>
-            <td><%= select_tag(:transaction, options_from_collection_for_select(CompanyAccount.all, :id, :name),
-                                             :class => "select-box-ict", :prompt => "Select customer...") %></td>
-            <td><%= select_tag(:transaction, options_from_collection_for_select(CompanyAccount.all, :id, :name),
-                                             :class => "select-box-ict", :prompt => "Select provider...")%></td>
+            <td><%= t.select :customer_id, options_from_collection_for_select(CompanyAccount.all, :id, :name),
+                                        {:prompt => "Select customer..." }, {:class => "select-box-ict"}%></td>
+            <td><%= t.select :provider_id, options_from_collection_for_select(CompanyAccount.all, :id, :name),
+                                        {:prompt => "Select provider...", }, {:class => "select-box-ict"}%></td>
           </tr>
         </tbody>
       </table>
@@ -31,9 +31,52 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= text_area_tag(:transaction, '', :class => "contract-text-field")%></td>
+            <td><%= t.text_area :description, :class => "contract-text-field"%></td>
           </tr>
         </tbody>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Customer's Role</th>
+              <th>Provider's Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= t.text_area :customer_role, :class => "contract-role-field"%></td>
+              <td><%= t.text_area :provider_role, :class => "contract-role-field"%></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Customer's Consequences</th>
+              <th>Provider's Consequences</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= t.text_area :customer_consequence, :class => "contract-role-field"%></td>
+              <td><%= t.text_area :provider_consequence, :class => "contract-role-field"%></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Valid Through</th>
+              <th>Transaction Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= t.text_area :valid_through, :class => "contract-valid-through-field"%></td>
+              <td><%= t.text_area :amount, :class => "contract-amount-field"%></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= t.submit "Create Transaction", :class => "btn btn-lg btn-primary submit-transaction" %>
             <% end %>
       </table>
     </div>
