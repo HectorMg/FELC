@@ -1,4 +1,12 @@
 class TransactionsController < ApplicationController
+
+  def show
+    @transaction = Transaction.find(params[:id])
+    @customer = @transaction.customer
+    @provider = @transaction.provider
+    render :layout => "contract_layout"
+  end
+
   def new_contract
     @transaction = Transaction.new
   end

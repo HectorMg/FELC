@@ -1,0 +1,94 @@
+<% provide(:title, "Contract") %>
+<header class="clearfix">
+  <div id="logo">
+    <%= image_tag('corner_logo_2') %>
+  </div>
+  <h1>CONTRACT</h1>
+  <div id="company" class="clearfix">
+    <div><%= @provider.name + ", " + @customer.name %></div>
+  </div>
+  <div id="project">
+    <div><span>PROJECT</span> INTER-COMPANY TRANSACTION</div>
+    <div><span>CUSTOMER</span><%= @customer.name %></div>
+    <div><span>PROVIDER</span><%= @provider.name %></div>
+    <div><span>DATE</span><%= @transaction.created_at %></div>
+    <div><span>CODE</span><%= @transaction.id %></div>
+  </div>
+</header>
+<div class="contract-area">
+  <table>
+    <thead>
+      <tr>
+        <th class="service" colspan="4">PURPOSE OF CONTRACT</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <!-- Content -->
+      <tr>
+       <td class="service" colspan="4"><%= @transaction.description %></td>
+      </tr>
+      <tr>
+        <th class="service" colspan="4"><%= @provider.name.upcase %>'S ROLE</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="service" colspan="4"><%= @transaction.provider_role %></td>
+      </tr>
+      <tr>
+        <th class="service" colspan="4"><%= @customer.name.upcase %>'S ROLE</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="service" colspan="4"><%= @transaction.customer_role %></td>
+      </tr>
+      <tr>
+        <th class="service" colspan="4"><%= @provider.name.upcase %>'S CONSEQUENCE</th>
+        <th></th>
+        <th></th>
+        <th></th>
+
+      </tr>
+      <tr>
+        <td class="service" colspan="4"><%= @transaction.provider_consequence %></td>
+      </tr>
+      <tr>
+        <th class="service" colspan="4"><%= @customer.name.upcase %>'S CONSEQUENCE</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="service" colspan="4"><%= @transaction.customer_consequence %></td>
+      </tr>
+      <tr>
+        <th class="service" colspan="4">TIME FOR WHICH THE CONTRACT IS VALID</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="service" colspan="4"><%= @transaction.valid_through %></td>
+      </tr>
+      <tr>
+        <th class="service" colspan="4">TRANSACTION AMOUNT</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="service" colspan="4">MXN $<%= @transaction.amount %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table id="last">
+    <th style="text-align: center; border-bottom: none;">_____________________________ <br/>  <br/><%= @provider.name.upcase %></th>
+    <th style="text-align: center; border-bottom: none;">_____________________________ <br/>  <br/><%= @customer.name.upcase %></th>
+  </table>
+</div>
