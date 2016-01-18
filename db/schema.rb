@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118203427) do
+ActiveRecord::Schema.define(version: 20160118223927) do
 
   create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
@@ -34,23 +34,6 @@ ActiveRecord::Schema.define(version: 20160118203427) do
   add_index "staffs", ["company_account_id"], name: "index_staffs_on_company_account_id"
   add_index "staffs", ["user_id", "company_account_id", "created_at"], name: "index_staffs_on_user_id_and_company_account_id_and_created_at"
   add_index "staffs", ["user_id"], name: "index_staffs_on_user_id"
-
-  create_table "transactions", force: :cascade do |t|
-    t.text     "description"
-    t.text     "customer_role"
-    t.text     "provider_role"
-    t.text     "customer_consequence"
-    t.text     "provider_consequence"
-    t.float    "amount"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "provider_id"
-    t.integer  "customer_id"
-    t.text     "valid_through"
-  end
-
-  add_index "transactions", ["customer_id"], name: "index_transactions_on_customer_id"
-  add_index "transactions", ["provider_id"], name: "index_transactions_on_provider_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
