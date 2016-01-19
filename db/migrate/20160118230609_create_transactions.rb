@@ -6,9 +6,10 @@ class CreateTransactions < ActiveRecord::Migration
       t.text :provider_role
       t.text :customer_consequence
       t.text :provider_consequence
+      t.text :valid_through
       t.float :amount
-
-      t.timestamps null: false
+      t.references :provider, index: true, foreign_key: true
+      t.references :customer, index: true, foreign_key: true
     end
   end
 end

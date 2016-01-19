@@ -12,3 +12,36 @@ User.create!( name: "Example User",
                 password:               password,
                 password_confirmation:  password, )
 end
+
+CompanyAccount.create!( name: "Company One",
+                        market: "Food",
+                        numerator: 1,
+                        balance: 1500)
+CompanyAccount.create!( name: "Company Two",
+                        market: "Food",
+                        numerator: 2,
+                        balance: 1500)
+CompanyAccount.create!( name: "Company Three",
+                        market: "Entertainment",
+                        numerator: 1,
+                        balance: 1500)
+CompanyAccount.create!( name: "Company Four",
+                        market: "Entertainment",
+                        numerator: 2,
+                        balance: 1500)
+CompanyAccount.create!( name: "Company Five",
+                        market: "Public Services",
+                        numerator: 1,
+                        balance: 1500)
+CompanyAccount.create!( name: "Company Six",
+                        market: "Public Services",
+                        numerator: 2,
+                        balance: 1500)
+CompanyAccount.create!( name: "Company Seven",
+                        market: "Wildcard",
+                        numerator: 1,
+                        balance: 1500)
+CompanyAccount.create!( name: "Company Eight",
+                        market: "Wildcard",
+                        numerator: 2,
+                        balance: 1500)
