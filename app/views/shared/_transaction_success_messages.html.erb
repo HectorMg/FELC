@@ -1,0 +1,10 @@
+<% if !@transaction.errors.any? %>
+  <div id="success_message">
+    <div class="alert alert-success">
+      <p>The transaction has been created successfully.</p>
+      <ul>
+        <li><%= link_to 'Print Contract', transaction_path(@transaction.id)%></li>
+      </ul>
+    </div>
+  </div>
+<% end %>
