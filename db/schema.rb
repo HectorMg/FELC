@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118230609) do
+ActiveRecord::Schema.define(version: 20160201172022) do
 
   create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
@@ -36,15 +36,17 @@ ActiveRecord::Schema.define(version: 20160118230609) do
   add_index "staffs", ["user_id"], name: "index_staffs_on_user_id"
 
   create_table "transactions", force: :cascade do |t|
-    t.text    "description"
-    t.text    "customer_role"
-    t.text    "provider_role"
-    t.text    "customer_consequence"
-    t.text    "provider_consequence"
-    t.text    "valid_through"
-    t.float   "amount"
-    t.integer "provider_id"
-    t.integer "customer_id"
+    t.text     "description"
+    t.text     "customer_role"
+    t.text     "provider_role"
+    t.text     "customer_consequence"
+    t.text     "provider_consequence"
+    t.text     "valid_through"
+    t.float    "amount"
+    t.integer  "provider_id"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "transactions", ["customer_id"], name: "index_transactions_on_customer_id"

@@ -2,8 +2,8 @@ class TransactionsController < ApplicationController
 
   def show
     @transaction = Transaction.find(params[:id])
-    @customer = @transaction.customer
-    @provider = @transaction.provider
+    @customer = CompanyAccount.find(@transaction.customer_id)
+    @provider = CompanyAccount.find(@transaction.provider_id)
     render :layout => "contract_layout"
   end
 
