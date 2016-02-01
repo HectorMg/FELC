@@ -30,6 +30,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
+      flash[:success] = "Welcome to the Sample App!"
       render 'new_contract'
     else
       render 'new_contract'

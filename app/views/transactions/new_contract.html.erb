@@ -17,7 +17,9 @@
           <tr>
             <%= form_for(@transaction) do |t| %>
              <%= render 'shared/transaction_error_messages' %>
-             <%= render 'shared/transaction_success_messages' %>
+             <% if flash[:success] %>
+            <%= render 'shared/transaction_success_messages' %>
+            <% end %>
             <td><%= t.select :customer_id, options_from_collection_for_select(CompanyAccount.all, :id, :name),
                                         {:prompt => "Select customer..." }, {:class => "select-box-ict"}%></td>
             <td><%= t.select :provider_id, options_from_collection_for_select(CompanyAccount.all, :id, :name),
