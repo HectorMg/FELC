@@ -19,6 +19,8 @@
         <li><%= link_to 'Users', users_path %></li>
           <% if staff? %>
             <li><%= link_to 'Bank', bank_path %></li>
+          <% else %>
+            <li><%= link_to 'Bank', company_bank_path %></li>
           <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -1,0 +1,78 @@
+<% provide(:title, "Corporate Bank Account") %>
+<div class="general-bank-area">
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h6 class="panel-title"><%= @account.name %>'s Transactions</h6>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="transaction-integer-cell">ID</th>
+                <th class="transac-text-cell">Description</th>
+                <th class="transaction-integer-cell">Customer</th>
+                <th class="transaction-integer-cell">Provider</th>
+                <th class="transaction-integer-cell">Amount</th>
+              </tr>
+            </thead>
+          </table>
+          <div class="bank-table">
+            <table class="table table-striped">
+              <tbody>
+                <% @transactions.reverse_each do |t|  %>
+                  <tr>
+                    <td class="transaction-integer-cell"><%= link_to t.id, transaction_path(t.id) %></td>
+                    <td class="transac-text-cell">
+                      <% if t.description.length > 40 %>
+                        <%= t.description[0, 40] + "..." %>
+                      <% else %>
+                        <%= t.description %>
+                      <% end %>
+                  </td>
+                    <td class="transaction-integer-cell"><%= base_company_from_id(t.customer_id) %></td>
+                    <td class="transaction-integer-cell"><%= base_company_from_id(t.provider_id) %></td>
+                    <td class="transaction-integer-cell">$<%= number_with_precision(t.amount, :precision => 2) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h6 class="panel-title"><%= @account.name %>'s Balance</h6>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Before Tax:
+                </th>
+                <th>
+                  After Tax:
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% if @account.balance > 0 %>
+                  <td class="green-balance" style="text-align: left">$ <%= @account.balance %></td>
+                  <td class="green-balance" style="text-align: left">$ <%= @account.balance - (@account.balance * 0.08) %></td>
+                <% else %>
+                  <td class="red-balance" style="text-align: left">$ <%= @account.balance %></td>
+                  <td class="red-balance" style="text-align: left">$ <%= @account.balance %></td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ Rails.application.config.assets.precompile += %w( dashboard.css )
 Rails.application.config.assets.precompile += %w( company_accounts.css )
 Rails.application.config.assets.precompile += %w( bank_system.css )
 Rails.application.config.assets.precompile += %w( contract.css )
+Rails.application.config.assets.precompile += %w( user_bank_interface.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
