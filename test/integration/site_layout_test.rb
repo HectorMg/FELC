@@ -12,7 +12,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get home_path
     assert_template 'static_pages/home'
     assert_select "a[href=?]", home_path, count: 2
-    assert_select "a[href=?]", company_path
+    assert_select "a[href=?]", teams_path
     assert_select "a[href=?]", schedule_path
     assert_select "a[href=?]", manual_path
 

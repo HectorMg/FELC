@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class TransactionsControllerTest < ActionController::TestCase
+
   test "should get new_contract" do
     get :new_contract
     assert_response :success

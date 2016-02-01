@@ -16,11 +16,6 @@ class TransactionTest < ActiveSupport::TestCase
     assert_not @transaction.valid?
   end
 
-  test "amount should be present" do
-    @transaction.amount = nil
-    assert_not @transaction.valid?
-  end
-
   test "provider should be present" do
     @transaction.provider_id = nil
     assert_not @transaction.valid?
@@ -37,7 +32,7 @@ class TransactionTest < ActiveSupport::TestCase
     assert_not @transaction.valid?
   end
 
-  test "amount should be a float" do
+  test "amount should be present and a float" do
     @transaction.amount = "asdfas"
     assert_not @transaction.valid?
   end
@@ -47,8 +42,5 @@ class TransactionTest < ActiveSupport::TestCase
     assert_not @transaction.valid?
   end
 
-  test do
-
-  end
 
 end

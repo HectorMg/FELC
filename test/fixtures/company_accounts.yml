@@ -1,12 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyString
   market: MyString
   numerator: 1
   balance: 1.5
 
 two:
+  id: 2
   name: MyString
   market: MyString
   numerator: 1
