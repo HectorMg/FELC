@@ -5,8 +5,13 @@ class CompanyAccountsController < ApplicationController
   def show
     @company_account = CompanyAccount.find(params[:id])
     @staffs = Staff.all
-    if @company_account.received_transactions.any? || @company_account.sent_transactions.any?
-      @transactions = @company_account.received_transactions.all + @company_account.sent_transactions.all
+    all_transactions = Transaction.all
+    @transactions = []
+
+    all_transactions.each do |t|
+      if (t.customer_id == @company_account.id || t.provider_id == @company_account.id )
+        @transactions << t
+      end
     end
   end
 end
