@@ -1,7 +1,7 @@
 <% provide(:title, "Bank") %>
 <!-- Companies -->
   <div class="row placeholders">
-    <% @company_accounts.each do |c| %>
+    <% @company_accounts.order(:id).each do |c| %>
       <div class="col-xs-6 col-sm-3 placeholder company-card-wrapper">
         <div class="company-card-inner">
           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
