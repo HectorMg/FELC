@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201172022) do
+ActiveRecord::Schema.define(version: 20160202001734) do
 
   create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(version: 20160201172022) do
     t.float    "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "company_accounts", ["user_id"], name: "index_company_accounts_on_user_id"
 
   create_table "staffs", force: :cascade do |t|
     t.string   "name"
