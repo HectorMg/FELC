@@ -51,3 +51,5 @@ CompanyAccount.create!( name: "Company Eight",
                         market: "Wildcard",
                         numerator: 2,
                         balance: 1500)
+CompanyAccount.create!( name: "The Bank",
+                        balance: 1500)
