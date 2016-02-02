@@ -22,9 +22,9 @@
                 <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>
             <% end %>
              <%= render 'shared/transaction_error_messages' %>
-            <td><%= t.select :customer_id, options_from_collection_for_select(CompanyAccount.all, :id, :name),
+            <td><%= t.select :customer_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
                                         {:prompt => "Select customer..." }, {:class => "select-box-ict"}%></td>
-            <td><%= t.select :provider_id, options_from_collection_for_select(CompanyAccount.all, :id, :name),
+            <td><%= t.select :provider_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
                                         {:prompt => "Select provider...", }, {:class => "select-box-ict"}%></td>
           </tr>
         </tbody>
