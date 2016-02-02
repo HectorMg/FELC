@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202001734) do
+ActiveRecord::Schema.define(version: 20160202035607) do
 
   create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 20160202001734) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.integer  "company_account_id"
+    t.float    "balance"
+    t.integer  "s1"
+    t.integer  "s2"
+    t.integer  "s3"
+    t.integer  "s4"
+    t.integer  "s5"
+    t.integer  "s6"
+    t.integer  "s7"
+    t.integer  "s8"
   end
 
   add_index "users", ["company_account_id", "created_at"], name: "index_users_on_company_account_id_and_created_at"

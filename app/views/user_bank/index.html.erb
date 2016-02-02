@@ -43,6 +43,7 @@
       </div>
     </div>
     <div class="col-sm-5">
+      <!-- Balance panel -->
       <div class="panel panel-success">
         <div class="panel-heading">
           <h6 class="panel-title"><%= @account.name %>'s Balance</h6>
@@ -68,6 +69,61 @@
                   <td class="red-balance" style="text-align: left">$ <%= @account.balance %></td>
                   <td class="red-balance" style="text-align: left">$ <%= @account.balance %></td>
                 <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Property panel -->
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h6 class="panel-title"><%= @account.name %>'s Properties</h6>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Property Name:
+                </th>
+                <th>
+                  Current Value:
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- Bla -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Stock panel -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6 class="panel-title"><%= @user.name %>'s Stock</h6>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Stock Name:
+                </th>
+                <th>
+                  Quantity:
+                </th>
+                <th>
+                  Total Value:
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- Bla -->
               </tr>
             </tbody>
           </table>
