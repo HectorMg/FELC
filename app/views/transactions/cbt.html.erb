@@ -1,0 +1,78 @@
+<% provide(:title, "Deposit") %>
+<div class="general-bank-area">
+  <h2>Cash Box Transaction</h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <!-- Deposit -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"> Deposit</h3>
+        </div>
+        <div class="panel-body">
+          <%= form_for(@transaction) do |t| %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Company:</th>
+                <th>Amount:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% if flash[:success] == "deposit" %>
+                   <%= render 'shared/transaction_success_messages' %>
+                <% elsif flash[:error] %>
+                    <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>
+                <% end %>
+                 <%= render 'shared/transaction_error_messages' %>
+                <td><%= t.select :provider_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
+                                            {:prompt => "Company Account", }, {:class => "select-box-ict"}%></td>
+                <td><%= t.text_field :amount %></td>
+                 <%= t.hidden_field :customer_id, :value => 9 %>
+                 <%= t.hidden_field :description, :value => "Deposit" %>
+              </tr>
+            </tbody>
+          </table>
+            <%= t.submit "Deposit", :class => "btn btn-lg btn-primary submit-transaction" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <!-- Withdraw -->
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"> Withdrawal</h3>
+        </div>
+        <div class="panel-body">
+          <%= form_for(@transaction) do |t| %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Company:</th>
+                <th>Amount:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% if flash[:success] == "withdrawal" %>
+                   <%= render 'shared/transaction_success_messages' %>
+                <% elsif flash[:error] %>
+                    <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>
+                <% end %>
+                 <%= render 'shared/transaction_error_messages' %>
+                <td><%= t.select :customer_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
+                                            {:prompt => "Company Account", }, {:class => "select-box-ict"}%></td>
+                <td><%= t.text_field :amount %></td>
+                 <%= t.hidden_field :provider_id, :value => 9 %>
+                 <%= t.hidden_field :description, :value => "Withdrawal" %>
+              </tr>
+            </tbody>
+          </table>
+            <%= t.submit "Withdraw", :class => "btn btn-lg btn-danger submit-transaction" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

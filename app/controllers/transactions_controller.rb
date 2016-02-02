@@ -21,11 +21,8 @@ class TransactionsController < ApplicationController
   def stock_sale
   end
 
-  def deposit
-    @transaction = Transaction.new(:description => "Deposit", :customer_id => 9)
-  end
-
-  def withdraw
+  def cbt
+    @transaction = Transaction.new()
   end
 
   def create
@@ -39,7 +36,6 @@ class TransactionsController < ApplicationController
       provider_balance += @transaction.amount
       # Change amount in table
       deposit = @provider.update_attribute(:balance, provider_balance)
-      puts "DEPOSITADO EN COMPAÑÍA"
 
       # Add amount to cash box counter
       @cashbox = CompanyAccount.find(9)
@@ -47,7 +43,21 @@ class TransactionsController < ApplicationController
       cashbox_balance += @transaction.amount
       #Change amount in table
       receive = @cashbox.update_attribute(:balance, cashbox_balance)
-      puts "DEPOSITADO EN BANCO"
+    # For withdrawals only (move to helper)
+    elsif transaction_params[:description] == "Withdrawal"
+      # Add amount to company account
+      @customer = CompanyAccount.find(@transaction.customer_id)
+      customer_balance = @customer.balance
+      customer_balance -= @transaction.amount
+      # Change amount in table
+      withdraw = @customer.update_attribute(:balance, customer_balance)
+
+      # Add amount to cash box counter
+      @cashbox = CompanyAccount.find(9)
+      cashbox_balance = @cashbox.balance
+      cashbox_balance -= @transaction.amount
+      #Change amount in table
+      reduce = @cashbox.update_attribute(:balance, cashbox_balance)
 
     else
       #All transactions
@@ -74,12 +84,19 @@ class TransactionsController < ApplicationController
       completed_deposit = @transaction.save
     end
 
+    if withdraw && reduce
+      completed_withdrawal = @transaction.save
+    end
+
     if completed_transaction
       flash[:success] = ""
       render 'new_contract'
     elsif completed_deposit
-      flash[:success] = ""
-      render 'deposit'
+      flash[:success] = "deposit"
+      render 'cbt'
+    elsif completed_withdrawal
+      flash[:success] = "withdrawal"
+      render 'cbt'
     else
       flash[:error] = ""
       render 'new_contract'
