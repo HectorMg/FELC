@@ -23,6 +23,10 @@ class UserBankController < ApplicationController
 
     #Get all stock
     @stock = Stock.all
+
+    #Put user stock info into array
+    @user_stock = [@user.s1, @user.s2, @user.s3, @user.s4, @user.s5, @user.s6, @user.s7, @user.s8]
+
   end
 
   def stock

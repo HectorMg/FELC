@@ -2,11 +2,12 @@
 <div class="general-bank-area">
   <div class="row">
     <div class="col-sm-7">
-      <div class="panel panel-primary">
+    <!-- Transactions Panel -->
+      <div class="panel panel-primary user-bank-trans-panel">
         <div class="panel-heading">
           <h6 class="panel-title"><%= @account.name %>'s Transactions</h6>
         </div>
-        <div class="panel-body">
+        <div class="panel-body trans-panel-body">
           <table class="table">
             <thead>
               <tr>
@@ -18,7 +19,7 @@
               </tr>
             </thead>
           </table>
-          <div class="bank-table">
+          <div class="bank-table trans-table">
             <table class="table table-striped">
               <tbody>
                 <% @transactions.reverse_each do |t|  %>
@@ -42,6 +43,7 @@
         </div>
       </div>
     </div>
+    <!-- Right div -->
     <div class="col-sm-5">
       <!-- Balance panel -->
       <div class="panel panel-success">
@@ -114,32 +116,41 @@
           <h6 class="panel-title"><%= @user.name %>'s Stock</h6>
         </div>
         <div class="panel-body">
-          <% if @user.s1 != nil || @user.s2 != nil || @user.s3 != nil
-             || @user.s4 != nil || @user.s5 != nil || @user.s6 != nil
-             || @user.s7 != nil || @user.s8 != nil%>
+          <% if @user_stock[0] != nil || @user_stock[1] != nil || @user_stock[2] != nil || @user_stock[3] != nil || @user_stock[4] != nil || @user_stock[5] != nil || @user_stock[6] != nil || @user_stock[7] != nil %>
+
+             <table class="table table-striped">
+               <thead>
+                 <tr>
+                   <th>
+                     Stock Name:
+                   </th>
+                   <th>
+                     Quantity:
+                   </th>
+                   <th>
+                     Total Value:
+                   </th>
+                 </tr>
+               </thead>
+               <tbody>
+                <% for i in 1..8 %>
+                  <% stock = Stock.find(i) %>
+                  <% if  @user_stock[i-1]  == nil%>
+                    <% user_stock = 0 %>
+                  <% else %>
+                    <% user_stock = @user_stock[i-1] %>
+                  <% end %>
+                  <tr>
+                    <td><%= stock.abbrev %></td>
+                    <td><%= user_stock %></td>
+                    <td>$ <%= (stock.price * user_stock) %></td>
+                <% end %>
+               </tbody>
+             </table>
+
           <% else %>
           <p>You don't own any stock.</p>
           <% end %>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>
-                  Stock Name:
-                </th>
-                <th>
-                  Quantity:
-                </th>
-                <th>
-                  Total Value:
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <!-- Bla -->
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
