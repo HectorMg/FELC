@@ -1,5 +1,11 @@
 class TransactionsController < ApplicationController
 
+  before_action :admin_user, only: [:new_contract, :new_copyright,
+                                    :stock_purchase, :stock_sale,
+                                    :properties, :cbt, :create]
+  before_action :own_transaction, only: :show
+
+
   def show
     @transaction = Transaction.find(params[:id])
     @customer = CompanyAccount.find(@transaction.customer_id)
@@ -100,6 +106,19 @@ class TransactionsController < ApplicationController
     else
       flash[:error] = ""
       render 'new_contract'
+    end
+  end
+
+  # Before action filters
+
+  def admin_user
+    redirect_to(company_bank_url) unless current_user.admin?
+  end
+
+  def own_transaction
+    @transaction = Transaction.find(params[:id])
+    if !belongs_to_user_company(@transaction)
+      redirect_to(company_bank_url)
     end
   end
 

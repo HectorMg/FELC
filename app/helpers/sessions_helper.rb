@@ -34,6 +34,11 @@ module SessionsHelper
     current_user.admin?
   end
 
+  def belongs_to_user_company(transaction)
+    company_id = current_user.company_account_id
+    (company_id == transaction.provider_id || company_id == transaction.customer_id)
+  end
+
   def forget(user)
     user.forget
     cookies.delete(:user_id)

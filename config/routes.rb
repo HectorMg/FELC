@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'stock_sale'     => 'transactions#stock_sale'
   get 'cbt'            => 'transactions#cbt'
   get 'company_bank'   => 'user_bank#index'
-  get 'cbstock'        => 'user_bank/stock'
+  get 'cbstock'        => 'user_bank#stock'
   get 'companies/index'
   get 'companies/show'
   resources :users
