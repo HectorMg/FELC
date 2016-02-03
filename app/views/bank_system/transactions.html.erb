@@ -17,7 +17,7 @@
       <tbody>
         <% @transactions.reverse_each do |t|  %>
           <tr>
-            <td class="transaction-integer-cell"><%= link_to t.id, transaction_path(t.id) %></td>
+            <td class="transaction-integer-cell"><%= link_to t.id, transaction_path(t.id), :target => "_blank" %></td>
             <td class="transaction-text-cell">
               <% if t.description.length > 40 %>
                 <%= t.description[0, 40] + "..." %>

@@ -10,5 +10,5 @@ class LandingPageController < ApplicationController
       redirect_to home_path
     end
   end
-  
+
 end
