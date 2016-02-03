@@ -81,23 +81,30 @@
           <h6 class="panel-title"><%= @account.name %>'s Properties</h6>
         </div>
         <div class="panel-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>
-                  Property Name:
-                </th>
-                <th>
-                  Current Value:
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <!-- Bla -->
-              </tr>
-            </tbody>
-          </table>
+          <% if @properties.any? %>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    Property Name:
+                  </th>
+                  <th>
+                    Current Value:
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                  <% @properties.each do |property| %>
+                  <tr>
+                    <td><%= property.name %></td>
+                    <td>$ <%= property.bought_at %></td>
+                  </tr>
+                  <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <p>Your company doesn't own any properties yet.</p>
+          <% end %>
         </div>
       </div>
 
@@ -107,6 +114,12 @@
           <h6 class="panel-title"><%= @user.name %>'s Stock</h6>
         </div>
         <div class="panel-body">
+          <% if @user.s1 != nil || @user.s2 != nil || @user.s3 != nil
+             || @user.s4 != nil || @user.s5 != nil || @user.s6 != nil
+             || @user.s7 != nil || @user.s8 != nil%>
+          <% else %>
+          <p>You don't own any stock.</p>
+          <% end %>
           <table class="table table-striped">
             <thead>
               <tr>

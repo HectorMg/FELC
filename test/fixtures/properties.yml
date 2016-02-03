@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  price: 1.5
+  bought_at: 1.5
+  company_account_id: 
+
+two:
+  name: MyString
+  price: 1.5
+  bought_at: 1.5
+  company_account_id: 

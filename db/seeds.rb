@@ -1,3 +1,5 @@
+# Users
+
 User.create!( name: "Example User",
               email: "example@railstutorial.org",
               password:               "foobar",
@@ -19,6 +21,7 @@ User.create!( name: "Hector Morales",
                 password_confirmation:  password, )
 end
 
+# Company Accounts (9)
 CompanyAccount.create!( name: "Company One",
                         market: "Food",
                         numerator: 1,
@@ -53,3 +56,15 @@ CompanyAccount.create!( name: "Company Eight",
                         balance: 1500)
 CompanyAccount.create!( name: "The Bank",
                         balance: 1500)
+
+#Properites
+
+Property.create!( name: "Ranchito",
+                  price: 700,
+                  company_account_id: 9 )
+Property.create!( name: "Arbol",
+                  price: 200,
+                  company_account_id: 9)
+Property.create!( name: "Cyber",
+                  price: 150,
+                  company_account_id: 9)

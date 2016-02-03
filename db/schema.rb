@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202035607) do
+ActiveRecord::Schema.define(version: 20160203182451) do
 
   create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20160202035607) do
   end
 
   add_index "company_accounts", ["user_id"], name: "index_company_accounts_on_user_id"
+
+  create_table "properties", force: :cascade do |t|
+    t.string   "name"
+    t.float    "price"
+    t.float    "bought_at"
+    t.integer  "company_account_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "properties", ["company_account_id"], name: "index_properties_on_company_account_id"
 
   create_table "staffs", force: :cascade do |t|
     t.string   "name"
