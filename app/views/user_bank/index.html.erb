@@ -1,5 +1,8 @@
 <% provide(:title, "Corporate Bank Account") %>
+
+<h1 class="page-header"><%= @account.name %>'s Corporate Account</h1>
 <div class="general-bank-area">
+  <!-- Company Account -->
   <div class="row">
     <div class="col-sm-7">
     <!-- Transactions Panel -->
@@ -84,7 +87,7 @@
         </div>
         <div class="panel-body">
           <% if @properties.any? %>
-            <table class="table table-striped">
+            <table class="table table-striped properties-table">
               <thead>
                 <tr>
                   <th>
@@ -110,49 +113,64 @@
         </div>
       </div>
 
-      <!-- Stock panel -->
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h6 class="panel-title"><%= @user.name %>'s Stock</h6>
-        </div>
-        <div class="panel-body">
-          <% if @user_stock[0] != nil || @user_stock[1] != nil || @user_stock[2] != nil || @user_stock[3] != nil || @user_stock[4] != nil || @user_stock[5] != nil || @user_stock[6] != nil || @user_stock[7] != nil %>
+    </div>
+  </div>
+</div>
+<hr>
 
-             <table class="table table-striped">
-               <thead>
-                 <tr>
-                   <th>
-                     Stock Name:
-                   </th>
-                   <th>
-                     Quantity:
-                   </th>
-                   <th>
-                     Total Value:
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                <% for i in 1..8 %>
-                  <% stock = Stock.find(i) %>
-                  <% if  @user_stock[i-1]  == nil%>
-                    <% user_stock = 0 %>
-                  <% else %>
-                    <% user_stock = @user_stock[i-1] %>
-                  <% end %>
-                  <tr>
-                    <td><%= stock.abbrev %></td>
-                    <td><%= user_stock %></td>
-                    <td>$ <%= (stock.price * user_stock) %></td>
-                <% end %>
-               </tbody>
-             </table>
+<!-- Personal Account -->
 
-          <% else %>
-          <p>You don't own any stock.</p>
-          <% end %>
-        </div>
-      </div>
+<h1 class="page-header">Personal Account</h1>
+<div class="general-bank-area">
+  <!-- Stock panel -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h6 class="panel-title"><%= @user.name %>'s Stock</h6>
+    </div>
+    <div class="panel-body">
+      <% if @user_stock[0] != nil || @user_stock[1] != nil || @user_stock[2] != nil || @user_stock[3] != nil || @user_stock[4] != nil || @user_stock[5] != nil || @user_stock[6] != nil || @user_stock[7] != nil %>
+
+         <table class="table table-striped">
+           <thead>
+             <tr>
+               <th style= "width: 12%"></th>
+              <% for i in 1..8 %>
+                 <% stock = Stock.find(i) %>
+                 <th style="text-align: center" ><%= stock.abbrev %></th>
+              <% end %>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td style= "width: 12%">Quantity Owned:</td>
+               <% for i in 1..8 %>
+                 <% stock = Stock.find(i) %>
+                 <% if  @user_stock[i-1]  == nil%>
+                   <% user_stock = 0 %>
+                 <% else %>
+                   <% user_stock = @user_stock[i-1] %>
+                 <% end %>
+                 <td style="text-align: center"><%= user_stock %></td>
+              <% end %>
+             </tr>
+             <tr>
+               <td style= "width: 12%">Total Value:</td>
+               <% for i in 1..8 %>
+                 <% stock = Stock.find(i) %>
+                 <% if  @user_stock[i-1]  == nil%>
+                   <% user_stock = 0 %>
+                 <% else %>
+                   <% user_stock = @user_stock[i-1] %>
+                 <% end %>
+                   <td style="text-align: center">$ <%= (stock.price * user_stock) %></td>
+               <% end %>
+             </tr>
+           </tbody>
+         </table>
+
+      <% else %>
+      <p>You don't own any stock.</p>
+      <% end %>
     </div>
   </div>
 </div>
