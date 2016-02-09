@@ -22,13 +22,15 @@ class TransactionsController < ApplicationController
   end
 
   def stock_purchase
+    @transaction = Transaction.new
+    @user = current_user
   end
 
   def stock_sale
   end
 
   def cbt
-    @transaction = Transaction.new()
+    @transaction = Transaction.new
   end
 
   def create
@@ -49,6 +51,7 @@ class TransactionsController < ApplicationController
       cashbox_balance += @transaction.amount
       #Change amount in table
       receive = @cashbox.update_attribute(:balance, cashbox_balance)
+
     # For withdrawals only (move to helper)
     elsif transaction_params[:description] == "Withdrawal"
       # Add amount to company account
@@ -65,8 +68,16 @@ class TransactionsController < ApplicationController
       #Change amount in table
       reduce = @cashbox.update_attribute(:balance, cashbox_balance)
 
+      # Stock Purchases
+    elsif transaction_params[:description][0..13] == "Stock Purchase"
+      #Get stock ID:
+      stock_id = params[:stock]
+
+      #Get customer
+      @customer = User.find(@transaction.customer_id)
+
     else
-      #All transactions
+      #Inter Company transactions
       #Remove amount from customer
       @customer = CompanyAccount.find(@transaction.customer_id)
       customer_balance = @customer.balance
@@ -127,6 +138,6 @@ class TransactionsController < ApplicationController
     def transaction_params
       params.require(:transaction).permit(:description, :provider_id, :customer_id,
                                           :provider_role, :customer_role, :provider_consequence,
-                                          :customer_consequence, :valid_through, :amount)
+                                          :customer_consequence, :valid_through, :amount, :stock)
     end
 end
