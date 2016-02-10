@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length:{ minimum: 6 }, allow_nil: true
   belongs_to :company_account
+  has_many :user_transactions
 
 
     def self.digest(string)

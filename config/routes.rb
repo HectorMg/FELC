@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'user_bank/index'
-
-  get 'user_bank/stock'
 
   root                    'landing_page#landing'
   get 'home'           => 'static_pages#home'
@@ -17,14 +14,15 @@ Rails.application.routes.draw do
   get 'properties'     => 'bank_system#properties'
   get 'new_contract'   => 'transactions#new_contract'
   get 'new_copyright'  =>'transactions#new_copyright'
-  get 'stock_purchase' => 'transactions#stock_purchase'
-  get 'stock_sale'     => 'transactions#stock_sale'
   get 'cbt'            => 'transactions#cbt'
   get 'company_bank'   => 'user_bank#index'
   get 'cbstock'        => 'user_bank#stock'
+  get 'stock_purchase' => "user_transactions#stock_purchase"
+  get 'stock_sale'     => "user_transactions#stock_sale"
   get 'companies/index'
   get 'companies/show'
   resources :users
   resources :company_accounts
   resources :transactions
+  resources :user_transactions
 end
