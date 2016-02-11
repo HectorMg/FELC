@@ -1,29 +1,3 @@
-# Users
-
-User.create!( name: "Example User",
-              email: "example@railstutorial.org",
-              password:               "foobar",
-              password_confirmation:  "foobar",
-              balance: 1500,
-              admin: true)
-User.create!( name: "Hector Morales",
-              email: "hectormgwake@gmail.com",
-              password:               "foobar",
-              password_confirmation:  "foobar",
-              company_account_id: 1,
-              balance: 1500,
-              admin: false)
-20.times do |n|
-  name = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!( name: name,
-                email: email,
-                balance: 1500,
-                password:               password,
-                password_confirmation:  password )
-end
-
 # Company Accounts (9)
 CompanyAccount.create!( name: "Company One",
                         market: "Food",
@@ -59,6 +33,33 @@ CompanyAccount.create!( name: "Company Eight",
                         balance: 1500)
 CompanyAccount.create!( name: "The Bank",
                         balance: 1500)
+                        
+# Users
+
+User.create!( name: "Example User",
+              email: "example@railstutorial.org",
+              password:               "foobar",
+              password_confirmation:  "foobar",
+              balance: 1500,
+              admin: true)
+User.create!( name: "Hector Morales",
+              email: "hectormgwake@gmail.com",
+              password:               "foobar",
+              password_confirmation:  "foobar",
+              company_account_id: 1,
+              balance: 1500,
+              admin: false)
+20.times do |n|
+  name = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!( name: name,
+                email: email,
+                balance: 1500,
+                password:               password,
+                password_confirmation:  password )
+end
+
 
 #Properites
 
