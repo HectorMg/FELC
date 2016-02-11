@@ -21,6 +21,15 @@ class UserBankController < ApplicationController
       end
     end
 
+    # Get user's transactions
+    @all_user_transactions = UserTransaction.all
+    @user_transactions = []
+    @all_user_transactions.each do |t|
+      if t.user_id == @user.id
+        @user_transactions << t
+      end
+    end
+
     #Get all stock
     @stock = Stock.all
 

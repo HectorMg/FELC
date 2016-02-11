@@ -122,6 +122,81 @@
 
 <h1 class="page-header">Personal Account</h1>
 <div class="general-bank-area">
+  <div class="row">
+    <div class="col-sm-7">
+    <!-- User Transactions Panel -->
+      <div class="panel panel-primary user-bank-trans-panel">
+        <div class="panel-heading">
+          <h6 class="panel-title"><%= @user.name %>' Transactions</h6>
+        </div>
+        <div class="panel-body trans-panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="transaction-integer-cell">ID</th>
+                <th class="transac-text-cell">Description</th>
+                <th class="transaction-integer-cell">Amount</th>
+              </tr>
+            </thead>
+          </table>
+          <div class="bank-table trans-table">
+            <table class="table table-striped">
+              <tbody>
+                <% @user_transactions.reverse_each do |t|  %>
+                  <tr>
+                    <td class="transaction-integer-cell"><%= link_to t.id, transaction_path(t.id), :target => "_blank" %></td>
+                    <td class="transac-text-cell">
+                      <% if t.description.length > 40 %>
+                        <%= t.description[0, 40] + "..." %>
+                      <% else %>
+                        <%= t.description %>
+                      <% end %>
+                  </td>
+                    <td class="transaction-integer-cell">$<%= number_with_precision(t.amount, :precision => 2) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right div -->
+    <div class="col-sm-5">
+      <!-- Balance panel -->
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h6 class="panel-title"><%= @user.name %>' Balance</h6>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Before Tax:
+                </th>
+                <th>
+                  After Tax:
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% if @user.balance > 0 %>
+                  <td class="green-balance" style="text-align: left">$ <%=@user.balance %></td>
+                  <td class="green-balance" style="text-align: left">$ <%=@user.balance - (@account.balance * 0.08) %></td>
+                <% else %>
+                  <td class="red-balance" style="text-align: left">$ <%=@user.balance %></td>
+                  <td class="red-balance" style="text-align: left">$ <%=@user.balance %></td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Stock panel -->
   <div class="panel panel-default">
     <div class="panel-heading">
