@@ -1,6 +1,6 @@
-<% provide(:title, "Deposit") %>
+<% provide(:title, "Stock Purchase") %>
 <div class="general-bank-area">
-  <h2>Cash Box Transaction</h2>
+  <h2>Stock Purchase</h2>
   <div class="row">
       <!-- Deposit -->
       <div class="panel panel-primary">
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
               <tr>
-                <% if flash[:success] == "deposit" %>
+                <% if flash[:success]  %>
 <!-- Change for link to RECEPIT -->
                    <%= render 'shared/transaction_success_messages' %>
                 <% elsif flash[:error] %>
@@ -31,12 +31,11 @@
                                           {:prompt => "Customer", }, {:class => "select-box-ict"}%></td>
                 <td><%= select_tag "stock", options_from_collection_for_select(Stock.all.order(:id), :id, :name), :prompt => "Stock" , :class => "select-box-ict"%></td>
                 <td><%= text_field_tag "stock_amount" %></td>
-                <td><%= t.submit "Calculate Total", :class => "btn btn-sm btn-primary submit-transaction" %></td>
+                <td><%= t.submit "Purchase Shares", :class => "btn btn-sm btn-primary submit-transaction" %></td>
                  <%= t.hidden_field :description, :value => "Purchase" %>
               </tr>
             </tbody>
           </table>
-            <!-- <%= t.submit "Make Transaction", :class => "btn btn-lg btn-primary submit-transaction" %> -->
           <% end %>
         </div>
       </div>

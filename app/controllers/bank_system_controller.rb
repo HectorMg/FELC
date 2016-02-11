@@ -7,6 +7,7 @@ class BankSystemController < ApplicationController
 
   def transactions
     @transactions = Transaction.all
+    @user_transactions = UserTransaction.all
   end
 
   def properties

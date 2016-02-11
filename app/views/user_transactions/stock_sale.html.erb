@@ -1,0 +1,44 @@
+<% provide(:title, "Stock Sale") %>
+<div class="general-bank-area">
+  <h2>Stock Sale</h2>
+  <div class="row">
+      <!-- Deposit -->
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Stock Sale</h3>
+        </div>
+        <div class="panel-body">
+          <%= form_for(@transaction) do |t| %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Customer:</th>
+                <th>Stock Company:</th>
+                <th>Amount:</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% if flash[:success]  %>
+<!-- Change for link to RECEPIT -->
+                   <%= render 'shared/transaction_success_messages' %>
+                <% elsif flash[:error] %>
+                    <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>
+                <% end %>
+                 <%= render 'shared/transaction_error_messages' %>
+                <td><%= t.select :user_id, options_from_collection_for_select(User.all.order(:id), :id, :name),
+                                          {:prompt => "Customer", }, {:class => "select-box-ict"}%></td>
+                <td><%= select_tag "stock", options_from_collection_for_select(Stock.all.order(:id), :id, :name), :prompt => "Stock" , :class => "select-box-ict"%></td>
+                <td><%= text_field_tag "stock_amount" %></td>
+                <td><%= t.submit "Sell Shares", :class => "btn btn-sm btn-primary submit-transaction" %></td>
+                 <%= t.hidden_field :description, :value => "Sale" %>
+              </tr>
+            </tbody>
+          </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
