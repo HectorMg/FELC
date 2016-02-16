@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'transactions'   => 'bank_system#transactions'
   get 'properties'     => 'bank_system#properties'
   get 'stock_mkt'      => 'bank_system#stock_mkt'
+  get 'stock_update'   => 'bank_system#stock_update'
   get 'new_contract'   => 'transactions#new_contract'
   get 'new_copyright'  =>'transactions#new_copyright'
   get 'cbt'            => 'transactions#cbt'

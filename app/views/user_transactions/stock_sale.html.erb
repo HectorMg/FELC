@@ -53,7 +53,7 @@
             <% end %>
             <% if s.price != nil && s.previous_price != nil %>
             <!-- Percentage increase/drop in price per share -->
-              <% pChange = ((s.price - s.previous_price) / s.price) * 100 %>
+              <% pChange = ((s.price - s.previous_price) / s.previous_price) * 100 %>
               <% if pChange > 0 %>
                 <h3 style="color: green">↑<%= pChange.round(2) %>%</h3>
               <% elsif pChange < 0 %>
