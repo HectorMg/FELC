@@ -13,6 +13,10 @@ class BankSystemController < ApplicationController
   def properties
   end
 
+  def stock_mkt
+    @stocks = Stock.all
+  end
+
 # Before action filters
 
 def admin_user

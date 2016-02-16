@@ -10,6 +10,7 @@ class UserTransactionsController < ApplicationController
 
   def stock_sale
     @transaction = UserTransaction.new()
+    @stock = Stock.all
   end
 
   def show

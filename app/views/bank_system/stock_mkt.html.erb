@@ -1,0 +1,45 @@
+<% provide(:title, "Stock Market Information") %>
+<!-- Companies -->
+  <div class="general-bank-area">
+    <h2> Stock Market Information</h2>
+    <div class="row placeholders">
+      <% @stocks.order(:id).each do |s| %>
+        <div class="col-xs-6 col-sm-3 placeholder company-card-wrapper">
+          <div class="company-card-inner">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+            <% if s.name != nil %>
+              <h3><%= s.name %></h3>
+            <% else %>
+              <h3 class="text-muted">Stock Name</h3>
+            <% end %>
+            <% if s.price != nil && s.previous_price != nil %>
+            <!-- Percentage increase/drop in price per share -->
+              <% pChange = ((s.price - s.previous_price) / s.price) * 100 %>
+              <% if pChange > 0 %>
+                <h3 style="color: green">↑<%= pChange.round(2) %>%</h3>
+              <% elsif pChange < 0 %>
+                <h3 style="color: red">↓<%= (pChange.round(2)) * -1 %>%</h3>
+              <% else %>
+                <h3><%= pChange.round(2)%>%</h3>
+              <% end %>
+
+            <!-- Current Share Value -->
+              <p class="text-muted">Current Share Value:</p>
+              <h4>$<%= s.price %></h4>
+              <!-- Previous Share Value -->
+              <p class="text-muted">Previous Share Value:</p>
+              <h4>$<%= s.previous_price %></h4>
+            <% end %>
+            <!-- Market Cap -->
+            <p class="text-muted">Market Cap:</p>
+            <% if s.market_cap >= 0 %>
+              <p class="green-balance">$<%= s.market_cap %></p>
+            <% else %>
+              <p class="red-balance">-$<%= (s.market_cap*-1) %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<!-- End Companies -->
