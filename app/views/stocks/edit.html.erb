@@ -1,0 +1,38 @@
+<% provide(:title, "Edit Stock") %>
+<div class="company-page">
+<!-- Title -->
+  <% if @stock.name != nil %>
+    <h1><%= @stock.name + " Information" %></h1>
+  <% end %>
+<!-- End Title -->
+<!-- Panel -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @stock.name %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+      </div>
+      <%= form_for(@stock) do |s| %>
+        <div class="col-sm-5" style="text-align: left">
+          <h4><strong>Name: </strong></h4>
+          <h5><%= s.text_field :name %></h5>
+          <h4><strong>Share Price: </strong></h4>
+          <h5>$ <%= s.text_field :price %></h5>
+          <h4><strong>Previous Share Price: </strong></h4>
+          <h5>$<%= @stock.previous_price.round(2) %></h5>
+        </div>
+        <div class="col-sm-4">
+          <h4><strong>Available Shares: </strong></h4>
+          <h5><%= @stock.quantity %></h5>
+          <h4><strong>Market Capitalization: </strong></h4>
+          <h5>$<%= @stock.market_cap.round(2) %></h5>
+          <%= s.submit "Save changes", class: "btn btn-primary sign-up-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
