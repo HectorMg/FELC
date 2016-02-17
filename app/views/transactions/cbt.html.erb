@@ -20,7 +20,6 @@
             <tbody>
               <tr>
                 <% if flash[:success] == "deposit" %>
-<!-- Change for link to RECEPIT -->
                    <%= render 'shared/transaction_success_messages' %>
                 <% elsif flash[:error] %>
                     <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>

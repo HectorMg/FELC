@@ -5,20 +5,23 @@ class UserTransactionsController < ApplicationController
 
   def stock_purchase
     @transaction = UserTransaction.new()
-    @stock = Stock.all
+    @stocks = Stock.all
   end
 
   def stock_sale
     @transaction = UserTransaction.new()
-    @stock = Stock.all
+    @stocks = Stock.all
   end
 
   def show
+    @transaction = UserTransaction.find(params[:id])
+    render :layout => "contract_layout"
   end
 
   def create
 
     @transaction = UserTransaction.new(user_transaction_params)
+    @stocks = Stock.all
 
     #Stock Purchase
     if user_transaction_params[:description][0..8] == "Purchase"
@@ -42,7 +45,7 @@ class UserTransactionsController < ApplicationController
 
       @transaction.amount = @amount
 
-      final_desc = "Purchased #{@stock_amount}  #{@stock.name} shares valued at #{@stock.price}"
+      final_desc = "Purchased #{@stock_amount}  #{@stock.name} share(s) valued at #{@stock.price}"
       @transaction.description = final_desc
       # Remove amount from customer
       balance = @user.balance
@@ -133,10 +136,10 @@ class UserTransactionsController < ApplicationController
 
       if completed_stock_purchase
         flash[:success] = ""
-        render 'user_transactions/stock_purchase'
+        render 'stock_purchase'
       else
         flash[:error] = ""
-        render 'user_transactions/stock_purchase'
+        render 'stock_purchase'
       end
     end
 
@@ -162,7 +165,7 @@ class UserTransactionsController < ApplicationController
 
       @transaction.amount = @amount
 
-      final_desc = "Sold #{@stock_amount}  #{@stock.name} shares valued at #{@stock.price}"
+      final_desc = "Sold #{@stock_amount}  #{@stock.name} share(s) valued at #{@stock.price}"
       @transaction.description = final_desc
 
       # Add amount to customer
@@ -266,15 +269,18 @@ class UserTransactionsController < ApplicationController
 
       if pay && decrease_stock && increase_stock_qty
         completed_stock_sale = @transaction.save && @user.save && @stock.save
-        puts completed_stock_sale
       end
 
       if completed_stock_sale
         flash[:success] = ""
-        render 'user_transactions/stock_sale'
+        flash[:error] = nil
+        render 'stock_sale'
+        @transaction = UserTransaction.new()
       else
+        flash[:success] = nil
         flash[:error] = ""
-        render 'user_transactions/stock_sale'
+        render 'stock_sale'
+        @transaction = UserTransaction.new()
       end
     end
   end
@@ -287,7 +293,7 @@ class UserTransactionsController < ApplicationController
 
   def own_transaction
     @transaction = UserTransaction.find(params[:id])
-    if !belongs_to_user(@transaction)
+    if !belongs_to_user(@transaction) && !current_user.admin?
       redirect_to(company_bank_url)
     end
   end

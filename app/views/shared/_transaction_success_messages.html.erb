@@ -3,7 +3,13 @@
     <div class="alert alert-success">
       <p>The transaction has been created successfully.</p>
       <ul>
-        <li><%= link_to 'Print Contract', transaction_path(@transaction.id), :target => '_blank'%></li>
+        <% if @transaction.description == "Deposit" || @transaction.description == "Withdrawal"%>
+          <li><%= link_to 'Print Receipt', transaction_path(@transaction.id), :target => '_blank'%></li>
+        <% elsif @transaction.description[0..8] == "Purchased" ||  @transaction.description[0..3] == "Sold" %>
+          <li><%= link_to 'Print Receipt', user_transaction_path(@transaction.id), :target => '_blank'%></li>
+        <% else %>
+          <li><%= link_to 'Print Contract', transaction_path(@transaction.id), :target => '_blank'%></li>
+        <% end %>
       </ul>
     </div>
   </div>

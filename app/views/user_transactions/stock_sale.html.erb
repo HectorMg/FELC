@@ -21,7 +21,6 @@
             <tbody>
               <tr>
                 <% if flash[:success]  %>
-<!-- Change for link to RECEPIT -->
                    <%= render 'shared/transaction_success_messages' %>
                 <% elsif flash[:error] %>
                     <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>
@@ -42,7 +41,7 @@
     </div>
     <h2>Stock Market Information</h2>
     <div class="row placeholders">
-      <% @stock.order(:id).each do |s| %>
+      <% @stocks.order(:id).each do |s| %>
         <div class="col-xs-6 col-sm-3 placeholder company-card-wrapper">
           <div class="company-card-inner">
             <%= image_tag("#{s.abbrev}", :width => 150, :height => 150, :class => "img-responsive", :alt => "Generic placeholder thumbnail" ) %>

@@ -1,0 +1,54 @@
+<% provide(:title, "Receipt") %>
+<header class="clearfix">
+  <div id="logo">
+    <%= image_tag('corner_logo_2') %>
+  </div>
+  <% if @transaction.description[0..8] == "Purchased" %>
+    <h1>Stock Purchase Receipt</h1>
+  <% elsif @transaction.description[0..3] == "Sold"%>
+    <h1>Stock Sale Receipt</h1>
+  <% end %>
+
+  <div id="project">
+    <div><span>PROJECT</span> STOCK MARKET TRANSACTION</div>
+    <div><span>CUSTOMER</span> <%= @transaction.user.name.upcase %></div>
+    <div><span style="text-align: left">DATE</span> <%= @transaction.created_at %></div>
+    <div><span style="text-align: left">CODE</span> <%= "#{@transaction.id} - SM"%></div>
+  </div>
+</header>
+<div class="contract-area">
+  <table class= "contract">
+    <thead>
+      <tr>
+        <th class="service">SERVICE</th>
+        <th class="desc">DESCRIPTION</th>
+        <th>AMOUNT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% if @transaction.description[0..8] == "Purchased" %>
+          <td class="service">STOCK PURCHASE</td>
+        <% elsif @transaction.description[0..3] == "Sold"%>
+          <td class="service">STOCK SALE</td>
+        <% end %>
+        <td class="desc"><%= @transaction.description %></td>
+        <td class="unit">$<%= @transaction.amount.round(2) %></td>
+      </tr>
+
+      <tr>
+        <td colspan="3">SUBTOTAL</td>
+        <td class="total">$<%= @transaction.amount.round(2) %></td>
+      </tr>
+      <tr>
+        <td colspan="3" class="grand total">GRAND TOTAL</td>
+        <td class="grand total">$<%= @transaction.amount.round(2) %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td id="companysig">_____________________________ <br/>  <br/><%= @transaction.user.name.upcase %> </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
