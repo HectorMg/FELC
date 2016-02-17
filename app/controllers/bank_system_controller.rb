@@ -17,6 +17,10 @@ class BankSystemController < ApplicationController
     @stocks = Stock.all
   end
 
+  def stock_edit
+    @stock = Stock.all
+  end
+
 # Before action filters
 
 def admin_user
