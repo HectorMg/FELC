@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'copyrights/index'
+
+  get 'copyrights/show'
+
+  get 'copyrights/new'
+
+  get 'copyrights/create'
+
+  get 'copyrights/edit'
+
+  get 'copyrights/destroy'
+
   get 'stocks/index'
 
   get 'stocks/show'
