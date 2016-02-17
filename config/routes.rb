@@ -1,29 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'copyrights/index'
-
-  get 'copyrights/show'
-
-  get 'copyrights/new'
-
-  get 'copyrights/create'
-
-  get 'copyrights/edit'
-
-  get 'copyrights/destroy'
-
-  get 'stocks/index'
-
-  get 'stocks/show'
-
-  get 'stocks/new'
-
-  get 'stocks/create'
-
-  get 'stocks/edit'
-
-  get 'stocks/delete'
-
   root                    'landing_page#landing'
   get 'home'           => 'static_pages#home'
   get 'teams'          => 'static_pages#company'
@@ -38,7 +14,7 @@ Rails.application.routes.draw do
   get 'properties'     => 'bank_system#properties'
   get 'stock_mkt'      => 'bank_system#stock_mkt'
   get 'new_contract'   => 'transactions#new_contract'
-  get 'new_copyright'  => 'transactions#new_copyright'
+  get 'new_copyright'  => 'copyrights#new'
   get 'cbt'            => 'transactions#cbt'
   get 'company_bank'   => 'user_bank#index'
   get 'cbstock'        => 'user_bank#stock'
@@ -51,4 +27,5 @@ Rails.application.routes.draw do
   resources :company_accounts
   resources :transactions
   resources :user_transactions
+  resources :copyrights
 end

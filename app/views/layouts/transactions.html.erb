@@ -15,29 +15,7 @@
         <div class="row">
           <% if staff? %>
           <!-- Side Bar -->
-              <div class="col-sm-3 col-md-2 sidebar">
-                <h5>Information</h5>
-                <ul class="nav nav-sidebar">
-                  <li><%= link_to 'Accounts', bank_path %></li>
-                  <li><%= link_to 'Transaction History', transactions_path %></li>
-                  <li><%= link_to 'Properties', properties_path %></li>
-                  <li><%= link_to 'Stock Market', stocks_path %></li>
-                </ul>
-                <h5>Corporate Operations</h5>
-                <ul class="nav nav-sidebar">
-                  <li><%= link_to 'New Contract', new_contract_path %></li>
-                  <li><%= link_to 'New Copyright', new_copyright_path %></li>
-                  <li><%= link_to 'Property Purchase', properties_path %></li>
-                  <li><%= link_to 'Stock purchase', stock_purchase_path %></li>
-                  <li><%= link_to 'Stock Sale', stock_sale_path %></li>
-                </ul>
-                <h5>Cash Box Transactions</h5>
-                <ul class="nav nav-sidebar">
-                  <li><%= link_to 'Desposit', cbt_path %></li>
-                  <li><%= link_to 'Withdrawal', cbt_path %></li>
-                </ul>
-              </div>
-
+            <%= render 'layouts/bank_sidebar' %>
         <!-- End Side Bar -->
 
     <!-- Dashboard -->
