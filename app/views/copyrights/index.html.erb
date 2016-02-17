@@ -16,19 +16,21 @@
     <table class="table table-striped">
       <tbody>
         <% @copyrights.reverse_each do |c|  %>
-          <tr>
-            <td class="transaction-integer-cell"><%= link_to c.id, copyright_path(c.id), :target => "_blank" %></td>
-            <td class="transaction-integer-cell">
-              <% if c.concept.length > 40 %>
-                <%= c.concept[0, 40] + "..." %>
-              <% else %>
-                <%= c.concept %>
-              <% end %>
-          </td>
-            <td class="transaction-integer-cell"><%= base_company_from_id(c.company_account.id) %></td>
-            <td class="transaction-text-cell" style="text-align: center"><%= c.updated_at %></td>
-            <td class="transaction-integer-cell">$<%= number_with_precision(c.amount, :precision => 2) %></td>
-          </tr>
+          <% if c.active %>
+            <tr>
+              <td class="transaction-integer-cell"><%= link_to c.id, copyright_path(c.id), :target => "_blank" %></td>
+              <td class="transaction-integer-cell">
+                <% if c.concept.length > 40 %>
+                  <%= c.concept[0, 40] + "..." %>
+                <% else %>
+                  <%= c.concept %>
+                <% end %>
+              </td>
+              <td class="transaction-integer-cell"><%= base_company_from_id(c.company_account.id) %></td>
+              <td class="transaction-text-cell" style="text-align: center"><%= c.updated_at %></td>
+              <td class="transaction-integer-cell">$<%= number_with_precision(c.amount, :precision => 2) %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
