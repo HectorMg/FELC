@@ -28,7 +28,9 @@
         <h5><%= @stock.quantity %></h5>
         <h4><strong>Market Capitalization: </strong></h4>
         <h5>$<%= @stock.market_cap.round(2) %></h5>
-        <%= link_to 'Edit Stock Attributes', edit_stock_path, :class => "btn btn-lg btn-primary", :style => "width: 100%" %>
+        <% if staff? %>
+          <%= link_to 'Edit Stock Attributes', edit_stock_path, :class => "btn btn-lg btn-primary", :style => "width: 100%" %>
+        <% end %>
       </div>
     </div>
   </div>
