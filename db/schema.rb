@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216234915) do
+ActiveRecord::Schema.define(version: 20160217065459) do
 
   create_table "company_accounts", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20160216234915) do
   end
 
   add_index "company_accounts", ["user_id"], name: "index_company_accounts_on_user_id"
+
+  create_table "copyrights", force: :cascade do |t|
+    t.text     "concept"
+    t.boolean  "active"
+    t.integer  "company_account_id"
+    t.float    "amount"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "copyrights", ["company_account_id"], name: "index_copyrights_on_company_account_id"
 
   create_table "properties", force: :cascade do |t|
     t.string   "name"
