@@ -33,7 +33,7 @@ CompanyAccount.create!( name: "Company Eight",
                         balance: 1500)
 CompanyAccount.create!( name: "The Bank",
                         balance: 1500)
-                        
+
 # Users
 
 User.create!( name: "Example User",
@@ -77,40 +77,48 @@ Property.create!( name: "Cyber",
 Stock.create!(name: "Aeromexico",
               abbrev: "AEROMX",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
 Stock.create!(name: "Alfa",
               abbrev: "ALFA",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
 Stock.create!(name: "América Móvil",
               abbrev: "AMX",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
 Stock.create!(name: "Bachoco",
               abbrev: "BAC",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
 Stock.create!(name: "BBVA",
               abbrev: "BBVA",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
 Stock.create!(name: "CEMEX",
               abbrev: "CMX",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
 Stock.create!(name: "Vitro",
               abbrev: "VIT",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
 Stock.create!(name: "Walmart",
               abbrev: "WMT",
               quantity: 500,
+              total_quantity: 500,
               price: 25,
               market_cap: 12500)
