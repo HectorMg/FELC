@@ -13,7 +13,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+        <%= image_tag("#{@stock.abbrev}", :width => 150, :height => 150, :class => "img-responsive", :alt => "Generic placeholder thumbnail" ) %>
       </div>
       <%= form_for(@stock) do |s| %>
         <div class="col-sm-5" style="text-align: left">

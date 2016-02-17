@@ -23,8 +23,9 @@ class StocksController < ApplicationController
     @stock = Stock.find(params[:id])
     if (stock_params[:name] != @stock.name) || (stock_params[:price] != @stock.price)
       prev_price = @stock.price
-      if @stock.update_attributes(stock_params) && @stock.update_attribute(:previous_price, prev_price)
-        flash[:success] = "Profile successfully updated!"
+      market_cap = stock_params[:price].to_f * @stock.total_quantity.to_f
+      if @stock.update_attributes(stock_params) && @stock.update_attribute(:previous_price, prev_price) && @stock.update_attribute(:market_cap, market_cap)
+        flash[:success] = "Stock successfully updated!"
         redirect_to @stock
       else
         render 'edit'

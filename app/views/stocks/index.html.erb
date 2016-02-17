@@ -6,7 +6,7 @@
       <% @stocks.order(:id).each do |s| %>
         <div class="col-xs-6 col-sm-3 placeholder company-card-wrapper">
           <div class="company-card-inner">
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+            <%= image_tag("#{s.abbrev}", :width => 150, :height => 150, :class => "img-responsive", :alt => "Generic placeholder thumbnail" ) %>
             <% if s.name != nil %>
               <h3><%= s.name %></h3>
             <% else %>
