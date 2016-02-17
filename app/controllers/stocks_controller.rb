@@ -21,7 +21,7 @@ class StocksController < ApplicationController
 
   def update
     @stock = Stock.find(params[:id])
-    if (stock_params[:name] != @stock.name) || (stock_params[:price] != @stock.price)
+    if ((stock_params[:name] != @stock.name) || (stock_params[:price] != @stock.price)) && ((stock_params[:name] != "") && (stock_params[:price] != ""))
       prev_price = @stock.price
       market_cap = stock_params[:price].to_f * @stock.total_quantity.to_f
       if @stock.update_attributes(stock_params) && @stock.update_attribute(:previous_price, prev_price) && @stock.update_attribute(:market_cap, market_cap)
@@ -30,6 +30,8 @@ class StocksController < ApplicationController
       else
         render 'edit'
       end
+    else
+      render 'edit'
     end
   end
 
