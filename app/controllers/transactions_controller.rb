@@ -128,7 +128,7 @@ class TransactionsController < ApplicationController
 
   def own_transaction
     @transaction = Transaction.find(params[:id])
-    if !belongs_to_user_company(@transaction)
+    if !belongs_to_user_company(@transaction) && !current_user.admin?
       redirect_to(company_bank_url)
     end
   end
