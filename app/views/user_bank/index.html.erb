@@ -45,6 +45,7 @@
           </div>
         </div>
       </div>
+<!-- Transaction panel ends -->
     </div>
     <!-- Right div -->
     <div class="col-sm-5">
@@ -79,8 +80,8 @@
           </table>
         </div>
       </div>
-
-      <!-- Property panel -->
+<!-- Company Acc Balance Panel ends -->
+<!-- Property panel -->
       <div class="panel panel-warning">
         <div class="panel-heading">
           <h6 class="panel-title"><%= @account.name %>'s Properties</h6>
@@ -112,7 +113,7 @@
           <% end %>
         </div>
       </div>
-
+<!-- Properties panel ends -->
     </div>
   </div>
 </div>
@@ -194,6 +195,9 @@
           </table>
         </div>
       </div>
+      <!-- Balance panel ends -->
+      <!-- Stock info button -->
+      <%= link_to 'Go to Stock Market', stocks_path, :class => "btn btn-lg btn-success", :style => "width: 100%" %>
     </div>
   </div>
 
@@ -242,7 +246,6 @@
              </tr>
            </tbody>
          </table>
-
       <% else %>
       <p>You don't own any stock.</p>
       <% end %>
