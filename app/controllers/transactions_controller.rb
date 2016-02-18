@@ -35,7 +35,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-
+    @transaction.created_at = Time.now
     # For deposits only (move to helper)
     if transaction_params[:description] == "Deposit"
       # Add amount to company account

@@ -1,38 +1,130 @@
 <% provide(:title, "Copyrights") %>
 <div class="general-bank-area">
+<!-- Active Copyright table -->
   <h2>Active Copyrights</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="transaction-integer-cell">ID</th>
-        <th class="transaction-integer-cell">Concept</th>
-        <th class="transaction-integer-cell">Owner</th>
-        <th class="transaction-text-cell" style="text-align: center">Activation Date</th>
-        <th class="transaction-integer-cell">Amount</th>
-      </tr>
-    </thead>
-  </table>
-  <div class="bank-table">
-    <table class="table table-striped">
-      <tbody>
-        <% @copyrights.reverse_each do |c|  %>
-          <% if c.active %>
-            <tr>
-              <td class="transaction-integer-cell"><%= link_to c.id, copyright_path(c.id), :target => "_blank" %></td>
-              <td class="transaction-integer-cell">
-                <% if c.concept.length > 40 %>
-                  <%= c.concept[0, 40] + "..." %>
-                <% else %>
-                  <%= c.concept %>
-                <% end %>
-              </td>
-              <td class="transaction-integer-cell"><%= base_company_from_id(c.company_account.id) %></td>
-              <td class="transaction-text-cell" style="text-align: center"><%= c.updated_at %></td>
-              <td class="transaction-integer-cell">$<%= number_with_precision(c.amount, :precision => 2) %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="transaction-integer-cell">ID</th>
+          <th class="transaction-integer-cell">Concept</th>
+          <th class="transaction-integer-cell">Owner</th>
+          <th class="transaction-text-cell" style="text-align: center">Activation Date</th>
+          <th class="transaction-integer-cell">Amount</th>
+          <th class="transaction-integer-cell">Retire</th>
+        </tr>
+      </thead>
     </table>
-  </div>
+    <div class="bank-table">
+      <table class="table table-striped">
+        <tbody>
+          <% @copyrights.reverse_each do |c|  %>
+            <% if c.active %>
+              <%= form_for(c, :url => retire_path(c)) do |f| %>
+                <tr>
+                  <td class="transaction-integer-cell"><%= link_to c.id, copyright_path(c.id), :target => "_blank" %></td>
+                  <td class="transaction-integer-cell">
+                    <% if c.concept.length > 40 %>
+                      <%= c.concept[0, 40] + "..." %>
+                    <% else %>
+                      <%= c.concept %>
+                    <% end %>
+                  </td>
+                  <td class="transaction-integer-cell"><%= base_company_from_id(c.company_account.id) %></td>
+                  <td class="transaction-text-cell" style="text-align: center"><%= c.updated_at %></td>
+                  <td class="transaction-integer-cell">$<%= number_with_precision(c.amount, :precision => 2) %></td>
+                  <%= f.hidden_field :id, :value => c.id %>
+                  <td class="transaction-integer-cell"><%= f.submit "Retire", :class => "btn btn-sm btn-danger submit-transaction"  %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top: 10px">
+      <%= form_tag(controller: "copyrights", action: "retire_all") do%>
+        <%= submit_tag("Retire all active copyrights", :class => "btn btn-sm btn-lg btn-danger", :style => "width: 100%") %>
+      <% end %>
+    </div>
+<!-- Ends Active Copyright Table -->
+<!-- Pending Copyright table -->
+  <h2>Pending Copyrights</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="transaction-integer-cell">ID</th>
+          <th class="transaction-integer-cell">Concept</th>
+          <th class="transaction-integer-cell">Owner</th>
+          <th class="transaction-text-cell" style="text-align: center">Submission Date</th>
+          <th class="transaction-integer-cell">Amount</th>
+          <th class="transaction-integer-cell"></th>
+        </tr>
+      </thead>
+    </table>
+    <div class="bank-table">
+      <table class="table table-striped">
+        <tbody>
+          <% @copyrights.reverse_each do |c|  %>
+            <% if !c.active && !c.deactivated %>
+              <%= form_for(c, :url => activate_path(c)) do |f| %>
+                <tr>
+                  <td class="transaction-integer-cell"><%= link_to c.id, copyright_path(c.id), :target => "_blank" %></td>
+                  <td class="transaction-integer-cell">
+                    <% if c.concept.length > 40 %>
+                      <%= c.concept[0, 40] + "..." %>
+                    <% else %>
+                      <%= c.concept %>
+                    <% end %>
+                  </td>
+                  <td class="transaction-integer-cell"><%= base_company_from_id(c.company_account.id) %></td>
+                  <td class="transaction-text-cell" style="text-align: center"><%= c.created_at %></td>
+                  <td class="transaction-integer-cell">$<%= number_with_precision(c.amount, :precision => 2) %></td>
+                  <%= f.hidden_field :id, :value => c.id %>
+                  <td class="transaction-integer-cell"><%= f.submit "Activate", :class => "btn btn-sm btn-success submit-transaction"  %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+<!-- Ends Pending Copyright Table -->
+<!-- Deactivated Copyright table -->
+  <h2>Deactivated Copyrights</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="transaction-integer-cell">ID</th>
+          <th class="transaction-integer-cell">Concept</th>
+          <th class="transaction-integer-cell">Owner</th>
+          <th class="transaction-text-cell" style="text-align: center">Deactivation Date</th>
+          <th class="transaction-integer-cell">Amount</th>
+          <th class="transaction-integer-cell"></th>
+        </tr>
+      </thead>
+    </table>
+    <div class="bank-table">
+      <table class="table table-striped">
+        <tbody>
+          <% @copyrights.reverse_each do |c|  %>
+            <% if !c.active && c.deactivated %>
+              <tr>
+                <td class="transaction-integer-cell"><%= link_to c.id, copyright_path(c.id), :target => "_blank" %></td>
+                <td class="transaction-integer-cell">
+                  <% if c.concept.length > 40 %>
+                    <%= c.concept[0, 40] + "..." %>
+                  <% else %>
+                    <%= c.concept %>
+                  <% end %>
+                </td>
+                <td class="transaction-integer-cell"><%= base_company_from_id(c.company_account.id) %></td>
+                <td class="transaction-text-cell" style="text-align: center"><%= c.updated_at %></td>
+                <td class="transaction-integer-cell">$<%= number_with_precision(c.amount, :precision => 2) %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+<!-- Ends Deactivated Copyright Table -->
 </div>

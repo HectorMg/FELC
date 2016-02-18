@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get 'cbstock'        => 'user_bank#stock'
   get 'stock_purchase' => 'user_transactions#stock_purchase'
   get 'stock_sale'     => 'user_transactions#stock_sale'
+  patch 'activate'     => 'copyrights#activate'
+  patch 'retire'       => 'copyrights#retire'
+  post 'retire_all'   => 'copyrights#retire_all'
   get 'companies/index'
   get 'companies/show'
   resources :users
