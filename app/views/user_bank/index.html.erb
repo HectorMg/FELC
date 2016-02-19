@@ -102,7 +102,7 @@
               <tbody>
                   <% @properties.each do |property| %>
                   <tr>
-                    <td><%= property.name %></td>
+                    <td><%= link_to "#{property.name}", property_path(property.id), :target => "_blank" %></td>
                     <td>$ <%= property.bought_at %></td>
                   </tr>
                   <% end %>

@@ -1,64 +1,29 @@
 <% provide(:title, "Properties") %>
 <div class="general-bank-area">
-  <h2>All Company Transactions</h2>
+  <h2> Properties Transactions</h2>
   <table class="table">
     <thead>
       <tr>
-        <th class="transaction-integer-cell">ID</th>
-        <th class="transaction-text-cell">Description</th>
-        <th class="transaction-integer-cell">Customer</th>
-        <th class="transaction-integer-cell">Provider</th>
-        <th class="transaction-integer-cell">Amount</th>
+        <th class"transaction-integer-cell">ID</th>
+        <th class"transaction-integer-cell">Name</th>
+        <th class"transaction-integer-cell">Owner</th>
+        <th class"transaction-integer-cell">Price</th>
+        <th class"transaction-integer-cell">Current Value</th>
+        <th class"transaction-integer-cell">Bought at</th>
       </tr>
     </thead>
   </table>
   <div class="bank-table">
     <table class="table table-striped">
       <tbody>
-        <% @transactions.reverse_each do |t|  %>
+        <% @properties.each do |pr|  %>
           <tr>
-            <td class="transaction-integer-cell"><%= link_to t.id, transaction_path(t.id), :target => "_blank" %></td>
-            <td class="transaction-text-cell">
-              <% if t.description.length > 40 %>
-                <%= t.description[0, 40] + "..." %>
-              <% else %>
-                <%= t.description %>
-              <% end %>
-          </td>
-            <td class="transaction-integer-cell"><%= base_company_from_id(t.customer_id) %></td>
-            <td class="transaction-integer-cell"><%= base_company_from_id(t.provider_id) %></td>
-            <td class="transaction-integer-cell">$<%= number_with_precision(t.amount, :precision => 2) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <h2>All Stock Transactions</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="transaction-integer-cell">ID</th>
-        <th class="transaction-text-cell">Description</th>
-        <th class="transaction-integer-cell">User</th>
-        <th class="transaction-integer-cell">Amount</th>
-      </tr>
-    </thead>
-  </table>
-  <div class="bank-table">
-    <table class="table table-striped">
-      <tbody>
-        <% @user_transactions.reverse_each do |t|  %>
-          <tr>
-            <td class="transaction-integer-cell"><%= link_to t.id, user_transaction_path(t.id), :target => "_blank" %></td>
-            <td class="transaction-text-cell">
-              <% if t.description.length > 40 %>
-                <%= t.description[0, 40] + "..." %>
-              <% else %>
-                <%= t.description %>
-              <% end %>
-          </td>
-            <td class="transaction-integer-cell"><%= User.find(t.user_id).name %></td>
-            <td class="transaction-integer-cell">$<%= number_with_precision(t.amount, :precision => 2) %></td>
+            <td class"transaction-integer-cell" style="text-align: center"><%= link_to pr.id, property_path(pr.id), :target => "_blank" %></td>
+            <td class"transaction-integer-cell" style="text-align: center"><%= link_to pr.name, property_path(pr.id), :target => "blank" %></td>
+            <td class"transaction-integer-cell" style="text-align: center"><%= base_company_from_id(pr.company_account_id) %></td>
+            <td class"transaction-integer-cell" style="text-align: center">$<%= number_with_precision(pr.price, :precision => 2) %></td>
+            <td class"transaction-integer-cell" style="text-align: center">$<%= number_with_precision(pr.bought_at, :precision => 2) %></td>
+            <td class"transaction-integer-cell" style="text-align: center"><%= pr.updated_at %></td>
           </tr>
         <% end %>
       </tbody>

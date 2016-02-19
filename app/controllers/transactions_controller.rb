@@ -21,6 +21,11 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new
   end
 
+  def new_property_purchase
+    @transaction = Transaction.new
+    @properties = Property.all
+  end
+
   def stock_purchase
     @transaction = Transaction.new
     @user = current_user
@@ -38,6 +43,7 @@ class TransactionsController < ApplicationController
     @transaction.created_at = Time.now
     # For deposits only (move to helper)
     if transaction_params[:description] == "Deposit"
+      type = "Deposit"
       # Add amount to company account
       @provider = CompanyAccount.find(@transaction.provider_id)
       provider_balance = @provider.balance
@@ -54,31 +60,64 @@ class TransactionsController < ApplicationController
 
     # For withdrawals only (move to helper)
     elsif transaction_params[:description] == "Withdrawal"
+      type = "Withdrawal"
       # Add amount to company account
       @customer = CompanyAccount.find(@transaction.customer_id)
       customer_balance = @customer.balance
-      customer_balance -= @transaction.amount
-      # Change amount in table
-      withdraw = @customer.update_attribute(:balance, customer_balance)
 
-      # Add amount to cash box counter
-      @cashbox = CompanyAccount.find(9)
-      cashbox_balance = @cashbox.balance
-      cashbox_balance -= @transaction.amount
-      #Change amount in table
-      reduce = @cashbox.update_attribute(:balance, cashbox_balance)
+      if(@customer.balance >= @transaction.amount)
+        customer_balance -= @transaction.amount
+        # Change amount in table
+        withdraw = @customer.update_attribute(:balance, customer_balance)
 
-      # Stock Purchases
-    elsif transaction_params[:description][0..13] == "Stock Purchase"
-      #Get stock ID:
-      stock_id = params[:stock]
+        # Add amount to cash box counter
+        @cashbox = CompanyAccount.find(9)
+        cashbox_balance = @cashbox.balance
+        cashbox_balance -= @transaction.amount
+        #Change amount in table
+        reduce = @cashbox.update_attribute(:balance, cashbox_balance)
+      end
 
-      #Get customer
-      @customer = User.find(@transaction.customer_id)
+      # Property sale
+    elsif transaction_params[:description] == "Property"
+      type = "Property"
+      #Get property:
+      @property = Property.find(transaction_params[:provider_role].to_i)
 
+      #Get buyer
+      @customer = CompanyAccount.find(transaction_params[:customer_id])
+      #Get seller
+      @provider = CompanyAccount.find(transaction_params[:provider_id])
+
+      #TRANSACTION PHASE
+      @transaction = Transaction.new(transaction_params)
+
+      if(@customer.balance >= @transaction.amount && @provider.id == @property.company_account.id)
+
+        # Change description
+        @transaction.description = "#{@customer.name} purchases the #{@property.name} Property from #{@provider.name} for #{@transaction.amount}"
+
+        @transaction.customer_role = "Pay the established amount."
+        @transaction.provider_role = "Relinquish said property."
+        @transaction.valid_through = "This purchase is valid for the rest of the event or until a different contract is established"
+
+        # Charge
+        new_c_balance = @customer.balance - @transaction.amount
+        charge_for_property = @customer.update_attribute(:balance, new_c_balance)
+
+        # Pay
+        new_p_balance = @provider.balance + @transaction.amount
+        pay_for_property = @provider.update_attribute(:balance, new_p_balance)
+
+        # Property Exchange
+        @property.bought_at = @transaction.amount
+        @property.company_account = @customer
+        exchange_property = @property.save
+      end
     else
       #Inter Company transactions
       #Remove amount from customer
+      type = "ICT"
       @customer = CompanyAccount.find(@transaction.customer_id)
       customer_balance = @customer.balance
       #check for enough funds
@@ -104,19 +143,42 @@ class TransactionsController < ApplicationController
     if withdraw && reduce
       completed_withdrawal = @transaction.save
     end
+    if charge_for_property && pay_for_property && exchange_property
+      completed_property_sale = @transaction.save
+    end
 
-    if completed_transaction
-      flash[:success] = ""
-      render 'new_contract'
-    elsif completed_deposit
-      flash[:success] = "deposit"
-      render 'cbt'
-    elsif completed_withdrawal
-      flash[:success] = "withdrawal"
-      render 'cbt'
-    else
-      flash[:error] = ""
-      render 'new_contract'
+    if type == "ICT"
+      if completed_transaction
+        flash[:success] = ""
+        render 'new_contract'
+      else
+        flash[:error] = ""
+        render 'new_contract'
+      end
+    elsif type == "Deposit"
+      if completed_deposit
+        flash[:success] = "deposit"
+        render 'cbt'
+      else
+        flash[:error] = ""
+        render 'new_contract'
+      end
+    elsif type == "Withdrawal"
+      if completed_withdrawal
+        flash[:success] = "withdrawal"
+        render 'cbt'
+      else
+        flash[:error] =""
+        render 'cbt'
+      end
+    elsif type == "Property"
+      if completed_property_sale
+        flash[:success] = ""
+        render 'new_property_purchase'
+      else
+        flash[:error] = ""
+        render 'new_property_purchase'
+      end
     end
   end
 

@@ -1,0 +1,28 @@
+<% provide(:title, "#{@property.name} Information") %>
+<div class="company-page">
+<!-- Title -->
+  <% if @property.name != nil %>
+    <h1><%= @property.name + " Information" %></h1>
+  <% end %>
+<!-- End Title -->
+<!-- Panel -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @property.name %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div style="text-align: center">
+        <h4><strong>Name: </strong></h4>
+        <h5><%= @property.name %></h5>
+        <h4><strong>Initial Value: </strong></h4>
+        <h5>$<%= @property.price.round(2) %></h5>
+        <h4><strong>Current Value: </strong></h4>
+        <h5>$<%= @property.bought_at.round(2) %></h5>
+        <h4><strong>Current Owner: </strong></h4>
+        <h5><%= @property.company_account.name %></h5>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

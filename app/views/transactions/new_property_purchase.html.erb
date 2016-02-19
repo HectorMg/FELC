@@ -1,0 +1,85 @@
+<% provide(:title, "New Contract") %>
+<div class="general-bank-area">
+  <div>
+    <h2>Property Exchange</h2>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"> Contract Details</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Customer:</th>
+              <th>Provider:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <%= form_for(@transaction) do |t| %>
+              <% if flash[:success] %>
+                 <%= render 'shared/transaction_success_messages' %>
+              <% elsif flash[:error] %>
+                  <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>
+              <% end %>
+               <%= render 'shared/transaction_error_messages' %>
+              <td><%= t.select :customer_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
+                                          {:prompt => "Select customer..." }, {:class => "select-box-ict"}%></td>
+              <td><%= t.select :provider_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
+                                          {:prompt => "Select provider...", }, {:class => "select-box-ict"}%></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Property to be traded:</th>
+              <th>Agreed upon amount:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= t.select :provider_role, options_from_collection_for_select(Property.all.order(:id), :id, :name),
+                                          {:prompt => "Select property..." }, {:class => "select-box-ict"}%></td>
+              <td><%= t.text_field :amount %></td>
+              <%= t.hidden_field :description, :value => "Property" %>
+            </tr>
+          </tbody>
+        </table>
+        <%= t.submit "Trade Property", :class => "btn btn-lg btn-primary submit-transaction" %>
+            <% end %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2> Properties Transactions</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class"transaction-integer-cell">ID</th>
+          <th class"transaction-integer-cell">Name</th>
+          <th class"transaction-integer-cell">Owner</th>
+          <th class"transaction-integer-cell">Price</th>
+          <th class"transaction-integer-cell">Current Value</th>
+          <th class"transaction-integer-cell">Bought at</th>
+        </tr>
+      </thead>
+    </table>
+    <div class="bank-table">
+      <table class="table table-striped">
+        <tbody>
+          <% @properties.each do |pr|  %>
+            <tr>
+              <td class"transaction-integer-cell" style="text-align: center"><%= link_to pr.id, property_path(pr.id), :target => "_blank" %></td>
+              <td class"transaction-integer-cell" style="text-align: center"><%= link_to pr.name, property_path(pr.id), :target => "blank" %></td>
+              <td class"transaction-integer-cell" style="text-align: center"><%= base_company_from_id(pr.company_account_id) %></td>
+              <td class"transaction-integer-cell" style="text-align: center">$<%= number_with_precision(pr.price, :precision => 2) %></td>
+              <td class"transaction-integer-cell" style="text-align: center">$<%= number_with_precision(pr.bought_at, :precision => 2) %></td>
+              <td class"transaction-integer-cell" style="text-align: center"><%= pr.updated_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
