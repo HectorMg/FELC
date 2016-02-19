@@ -46,6 +46,7 @@ class CopyrightsController < ApplicationController
     if charge
       @copy.save
       @transaction.save
+      flash[:success] = ""
       redirect_to :action => "index"
     else
       flash[:error] = ""
