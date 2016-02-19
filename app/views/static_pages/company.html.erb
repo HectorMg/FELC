@@ -1,6 +1,124 @@
 <% provide(:title, "Companies") %>
+<!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= image_tag("food_banner", :class => "first-slide" ) %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Food</h1>
+              <p>Food Companies will be in charge of selling food inside Prepa Tec Campus Santa Catarina.</p>
+              <p><a class="btn btn-lg btn-transparent" href="#food" role="button">Learn More</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("entertainment_banner", :class => "second-slide" ) %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Entertainment</h1>
+              <p>Entertainment companies will have to mobilize their resources in order to organize events related with entertaining people. </p>
+              <p><a class="btn btn-lg btn-transparent" href="#entertainment" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("publicservices_banner", :class => "third-slide" ) %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Public Services</h1>
+              <p>These companies have two main missions: supplying the necessary infrastructure for the functioning of the other companies and providing them with various services.</p>
+              <p><a class="btn btn-lg btn-transparent" href="#pservices" role="button">Learn More</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("wildcard_banner", :class => "fourth-slide" ) %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Wildcard</h1>
+              <p>These companies will have the advantage of being able to choose from either Food, or Entertainment company status, and then abide by the rules that apply.</p>
+              <p><a class="btn btn-lg btn-transparent" href="#wildcard" role="button">Learn More</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
 
-<h1>Companies</h1>
-<p>
-  This is the companies page
-</p>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing" style="margin-top: 30px;">
+      <!-- START THE FEATURETTES -->
+      <h1 id="food">Company Market Descriptions</h1>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading bs-h2-large" id="entertainment">Food Companies</h2>
+          <p class="lead">Food Companies will be in charge of selling food inside Prepa Tec Campus Santa Catarina. They’ll be competing against each other to earn the highest profit possible and negotiate with other companies to reach sales agreements for permission to sell during their events or in their territories.</p>
+        </div>
+        <div class="col-md-5">
+          <%= image_tag("food", :class => "featurette-image img-responsive center-block") %>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+        <h2 class="featurette-heading bs-h2-large" id="pservices">Entertainment Companies</h2>
+          <p class="lead">Entertainment companies will have to mobilize their resources in order to organize events related with entertaining people. These companies have a wide range of options to choose from during the course of the congress; however, all events must be submitted to ITESM authorization and held inside the Prepa Tec.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <%= image_tag("entertainment", :class => "featurette-image img-responsive center-block") %>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading bs-h2-large" id="wildcard">Public Services Companies</h2>
+          <p class="lead">These companies have two main missions: supplying the necessary infrastructure for the functioning of the other companies and providing them with various services. They will take care of distributing and renting spaces, as well as raw material, while also providing different services the other companies may require. </p>
+        </div>
+        <div class="col-md-5">
+          <%= image_tag("publicservices", :class => "featurette-image img-responsive center-block") %>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading bs-h2-large">Wildcard Companies</h2>
+          <p class="lead">These companies will have the advantage of being able to choose from either Food, or Entertainment company status, and then abide by the rules that apply. There will be two Wildcard companies and each will have to choose a different area in which to create their company. </p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <%= image_tag("wildcard", :class => "featurette-image img-responsive center-block") %>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+    </div>
+
+      <!-- /END THE FEATURETTES -->

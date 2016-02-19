@@ -11,6 +11,7 @@ class BankSystemController < ApplicationController
   end
 
   def properties
+    @properties = Property.all
   end
 
   def stock_mkt
