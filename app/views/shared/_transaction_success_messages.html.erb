@@ -1,4 +1,4 @@
-<% if @transaction.id %>
+<% if @transaction.id || @copy.id %>
   <div id="success_message">
     <div class="alert alert-success">
       <p>The transaction has been created successfully.</p>
@@ -7,6 +7,8 @@
           <li><%= link_to 'Print Receipt', transaction_path(@transaction.id), :target => '_blank'%></li>
         <% elsif @transaction.description[0..8] == "Purchased" ||  @transaction.description[0..3] == "Sold" %>
           <li><%= link_to 'Print Receipt', user_transaction_path(@transaction.id), :target => '_blank'%></li>
+        <% elsif @transaction.description[0..3] == "Copy" %>
+            <li><%= link_to 'Print Receipt', copyright_path(@copy.id), :target => '_blank'%></li>
         <% else %>
           <li><%= link_to 'Print Contract', transaction_path(@transaction.id), :target => '_blank'%></li>
         <% end %>

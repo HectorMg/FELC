@@ -1,2 +1,46 @@
-<h1>Copyrights#show</h1>
-<p>Find me in app/views/copyrights/show.html.erb</p>
+<header class="clearfix">
+  <div id="logo">
+    <%= image_tag('corner_logo_2') %>
+  </div>
+  <h1>COPYRIGHT RECEIPT</h1>
+  <div id="company" class="clearfix">
+    <div><?php echo $company ?></div>
+  </div>
+  <div id="project">
+    <div><span style="text-align: left">PROJECT</span> COPYRIGHT</div>
+    <div><span style="text-align: left">CLIENT</span> <%= CompanyAccount.find(@copy.company_account_id).name %></div>
+    <div><span style="text-align: left">DATE</span> <%= @copy.created_at %></div>
+    <div><span style="text-align: left">CODE</span> <%= "#{@copy.id} - CR" %></div>
+  </div>
+</header>
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th class="service">SERVICE</th>
+        <th class="desc">DESCRIPTION</th>
+        <th>AMOUNT</th>
+      </tr>
+    </thead>
+    <tbody>
+    <!-- Loopear -->
+      <tr>
+        <td class="service">COPYRIGHT</td>
+        <td class="desc"><%= "Copyright registration for: #{@copy.concept}" %></td>
+        <td class="unit">$<%= @copy.amount.round(2) %></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">SUBTOTAL</td>
+        <td class="total">$<%= @copy.amount.round(2) %></td>
+      </tr>
+      <tr>
+        <td colspan="4" class="grand total">GRAND TOTAL</td>
+        <td class="grand total">$<%= @copy.amount.round(2) %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table id="last">
+    <td id="companysig" style="margin-left: 50px;">_____________________________ <br/><br/><%= @copy.company_account.name %></td>
+  </table>
+</main>

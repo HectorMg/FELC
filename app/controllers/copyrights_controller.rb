@@ -23,13 +23,17 @@ class CopyrightsController < ApplicationController
     @copy.deactivated = false
 
     @company = @copy.company_account
+    @bank = CompanyAccount.find(9)
 
     balance = @company.balance
+
+    bank_balance = @bank.balance + @copy.amount
 
     if balance >= @copy.amount
       balance -= @copy.amount
 
       charge = @company.update_attribute(:balance, balance)
+      pay = @bank.update_attribute(:balance, bank_balance)
 
       @transaction = Transaction.new()
 
@@ -43,14 +47,14 @@ class CopyrightsController < ApplicationController
       @transaction.customer_id = @company.id
     end
 
-    if charge
+    if charge && pay
       @copy.save
       @transaction.save
       flash[:success] = ""
-      redirect_to :action => "index"
+      render "new"
     else
       flash[:error] = ""
-      redirect_to :action => "new"
+      render "new"
     end
 
   end
