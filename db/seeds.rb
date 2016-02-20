@@ -65,12 +65,15 @@ end
 
 Property.create!( name: "Ranchito",
                   price: 700,
+                  bought_at: 700,
                   company_account_id: 9 )
 Property.create!( name: "Arbol",
                   price: 200,
+                  bought_at: 200,
                   company_account_id: 9)
 Property.create!( name: "Cyber",
                   price: 150,
+                  bought_at: 150,
                   company_account_id: 9)
 #Stock
 

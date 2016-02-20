@@ -16,7 +16,7 @@
   <div class="bank-table">
     <table class="table table-striped">
       <tbody>
-        <% @properties.each do |pr|  %>
+        <% @properties.order(:id).each do |pr|  %>
           <tr>
             <td class"transaction-integer-cell" style="text-align: center"><%= link_to pr.id, property_path(pr.id), :target => "_blank" %></td>
             <td class"transaction-integer-cell" style="text-align: center"><%= link_to pr.name, property_path(pr.id), :target => "blank" %></td>
