@@ -42,23 +42,117 @@ User.create!( name: "Example User",
               password_confirmation:  "foobar",
               balance: 1500,
               admin: true)
-User.create!( name: "Hector Morales",
-              email: "hectormgwake@gmail.com",
-              password:               "foobar",
-              password_confirmation:  "foobar",
-              company_account_id: 1,
-              balance: 1500,
-              admin: false)
-20.times do |n|
-  name = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!( name: name,
-                email: email,
-                balance: 1500,
-                password:               password,
-                password_confirmation:  password )
-end
+
+User.create!( name: "Ale Hanun",
+              email: "alehanun@felc.com",
+              password:               "ahanun",
+              password_confirmation:  "ahanun",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Andrea Martínez",
+              email: "andreamartinez@felc.com",
+              password:               "amartinez",
+              password_confirmation:  "amartinez",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Paola Morales",
+              email: "paolamorales@felc.com",
+              password:               "pmorales",
+              password_confirmation:  "pmorales",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Paola Alanís",
+              email: "paolaalanís@felc.com",
+              password:               "palanis",
+              password_confirmation:  "palanis",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Mafer Rico",
+              email: "maferrico@felc.com",
+              password:               "mrico",
+              password_confirmation:  "mrico",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Marcelo Leal",
+              email: "marceloleal@felc.com",
+              password:               "mleal",
+              password_confirmation:  "mleal",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Fernando Carrillo",
+              email: "fernandocarrillo@felc.com",
+              password:               "fcarrillo",
+              password_confirmation:  "fcarrillo",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Fer de la Torre",
+              email: "ferdelatorre@felc.com",
+              password:               "fdelatorre",
+              password_confirmation:  "fdelatorre",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+
+User.create!( name: "Montse Muñoz",
+              email: "montsemuñoz@felc.com",
+              password:               "mmunoz",
+              password_confirmation:  "mmunoz",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Mariana Martínez",
+              email: "marianamartinez@felc.com",
+              password:               "mmartinez",
+              password_confirmation:  "mmartinez",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Juan Pablo Arce",
+              email: "juanpabloarce@felc.com",
+              password:               "jparce",
+              password_confirmation:  "jparce",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Pato Chapa",
+              email: "patochapa@felc.com",
+              password:               "pchapa",
+              password_confirmation:  "pchapa",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Pato Valerio",
+              email: "patovalerio@felc.com",
+              password:               "pvalerio",
+              password_confirmation:  "pvalerio",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+User.create!( name: "Rafa Garza",
+              email: "rafagarza@felc.com",
+              password:               "rgarza",
+              password_confirmation:  "rgarza",
+              company_account_id: 9,
+              balance: 0,
+              admin: true)
+#
+# 20.times do |n|
+#   name = Faker::Name.name
+#   email = "example-#{n+1}@railstutorial.org"
+#   password = "password"
+#   User.create!( name: name,
+#                 email: email,
+#                 balance: 1500,
+#                 password:               password,
+#                 password_confirmation:  password )
+# end
 
 
 #Properites
