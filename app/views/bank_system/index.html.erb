@@ -15,12 +15,17 @@
           <% end %>
           <p class="text-muted">Balance:</p>
           <% if c.balance >= 0 %>
-            <p class="green-balance">$<%= c.balance %></p>
+            <p class="green-balance">$<%= c.balance.round(2) %></p>
           <% else %>
-            <p class="red-balance">-$<%= (c.balance*-1) %></p>
+            <p class="red-balance">-$<%= (c.balance.round(2)*-1) %></p>
           <% end %>
         </div>
       </div>
+    <% end %>
+  </div>
+  <div>
+    <%= form_tag(controller: "transactions", action: "tax_all") do%>
+      <%= submit_tag("Tax all companies", :class => "btn btn-sm btn-lg btn-danger", :style => "width: 100%") %>
     <% end %>
   </div>
 <!-- End Companies -->

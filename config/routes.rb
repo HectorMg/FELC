@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   patch 'retire'           => 'copyrights#retire'
   post 'retire_all'        => 'copyrights#retire_all'
   get 'property_purchase'  => 'transactions#new_property_purchase'
+  post 'tax_all'            => 'transactions#tax_all'
   get 'companies/index'
   get 'companies/show'
   resources :users

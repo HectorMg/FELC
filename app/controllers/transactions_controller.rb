@@ -26,12 +26,34 @@ class TransactionsController < ApplicationController
     @properties = Property.all
   end
 
-  def stock_purchase
-    @transaction = Transaction.new
-    @user = current_user
-  end
+  def tax_all
+    @companies = CompanyAccount.all
+    @bank = CompanyAccount.find(9)
 
-  def stock_sale
+    @companies.each do |c|
+      if c.name != "The Bank"
+        pb = c.balance
+        total_tax = c.balance * 0.08
+        balance = pb - total_tax
+        bank_balance = @bank.balance + total_tax
+        charge = c.update_attribute(:balance, balance)
+        pay = @bank.update_attribute(:balance, bank_balance)
+
+        @transaction = Transaction.new
+
+        @transaction.customer_id = c.id
+        @transaction.provider_id = 9
+        @transaction.amount = total_tax
+        @transaction.description = "Standard daily taxation over company's balance."
+
+        if charge && pay
+          @transaction.save
+        end
+      end
+    end
+    @company_accounts = CompanyAccount.all
+    flash[:success] = ""
+    render 'bank_system/index'
   end
 
   def cbt
