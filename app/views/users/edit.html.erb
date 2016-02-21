@@ -31,6 +31,11 @@
               <%= f.label :password_confirmation, "Confirmation" %>
               <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+              <% if staff? %>
+                <%= f.label :company_account_id, "Company" %>
+                <%= f.text_field :company_account_id, class: 'form-control' %>
+              <% end %>
+
               <%= f.submit "Save changes", class: "btn btn-primary sign-up-button" %>
             <% end %>
 
