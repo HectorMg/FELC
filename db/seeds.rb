@@ -74,7 +74,7 @@ User.create!( name: "Paola Alanís",
 User.create!( name: "Mafer Rico",
               email: "maferrico@felc.com",
               password:               "mfrico",
-              password_confirmation:  "mfrico",
+              password_confirmation:  "mffasdrico",
               company_account_id: 9,
               balance: 0,
               admin: true)
@@ -157,17 +157,37 @@ User.create!( name: "Rafa Garza",
 
 #Properites
 
-Property.create!( name: "Ranchito",
-                  price: 700,
-                  bought_at: 700,
+Property.create!( name: "Bebederos",
+                  price: 450,
+                  bought_at: 450,
                   company_account_id: 9 )
-Property.create!( name: "Arbol",
+Property.create!( name: "Bancas",
+                  price: 500,
+                  bought_at: 500,
+                  company_account_id: 9)
+Property.create!( name: "Curvita",
+                  price: 250,
+                  bought_at: 250,
+                  company_account_id: 9)
+Property.create!( name: "Asta Bandera",
+                  price: 350,
+                  bought_at: 350,
+                  company_account_id: 9 )
+Property.create!( name: "Cybercafe",
+                  price: 250,
+                  bought_at: 250,
+                  company_account_id: 9)
+Property.create!( name: "Area Verde",
+                  price: 500,
+                  bought_at: 500,
+                  company_account_id: 9)
+Property.create!( name: "Patio Trasero",
+                  price: 300,
+                  bought_at: 300,
+                  company_account_id: 9 )
+Property.create!( name: "Under the Tree",
                   price: 200,
                   bought_at: 200,
-                  company_account_id: 9)
-Property.create!( name: "Cyber",
-                  price: 150,
-                  bought_at: 150,
                   company_account_id: 9)
 #Stock
 
