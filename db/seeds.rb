@@ -74,7 +74,7 @@ User.create!( name: "Paola Alanís",
 User.create!( name: "Mafer Rico",
               email: "maferrico@felc.com",
               password:               "mfrico",
-              password_confirmation:  "mffasdrico",
+              password_confirmation:  "mfrico",
               company_account_id: 9,
               balance: 0,
               admin: true)
