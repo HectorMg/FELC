@@ -23,7 +23,7 @@ class CopyrightsController < ApplicationController
     @copy.deactivated = false
 
     @company = @copy.company_account
-    @bank = CompanyAccount.find(9)
+    @bank = CompanyAccount.find(7)
 
     balance = @company.balance
 
@@ -43,7 +43,7 @@ class CopyrightsController < ApplicationController
       @transaction.customer_role = "Bring proof of copyright by #{limit_time}"
       @transaction.customer_consequence = "Copyright will not be activated and there will be no refund"
       @transaction.amount = 40.0
-      @transaction.provider_id = 9
+      @transaction.provider_id = 7
       @transaction.customer_id = @company.id
     end
 

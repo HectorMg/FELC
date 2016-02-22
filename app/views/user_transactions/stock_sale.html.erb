@@ -26,7 +26,7 @@
                     <% @transaction.errors.add(:amount, " must be equal to or lower than customer's balance.") %>
                 <% end %>
                  <%= render 'shared/transaction_error_messages' %>
-                <td><%= t.select :user_id, options_from_collection_for_select(User.all.order(:id), :id, :name),
+                <td><%= t.select :user_id, options_from_collection_for_select(User.where.not(admin: true).order(:id), :id, :name),
                                           {:prompt => "Customer", }, {:class => "select-box-ict"}%></td>
                 <td><%= select_tag "stock", options_from_collection_for_select(Stock.all.order(:id), :id, :name), :prompt => "Stock" , :class => "select-box-ict"%></td>
                 <td><%= text_field_tag "stock_amount" %></td>

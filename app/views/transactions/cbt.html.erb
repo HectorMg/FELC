@@ -28,7 +28,7 @@
                 <td><%= t.select :provider_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
                                             {:prompt => "Company Account", }, {:class => "select-box-ict"}%></td>
                 <td><%= t.text_field :amount %></td>
-                 <%= t.hidden_field :customer_id, :value => 9 %>
+                 <%= t.hidden_field :customer_id, :value => 7 %>
                  <%= t.hidden_field :description, :value => "Deposit" %>
               </tr>
             </tbody>
@@ -65,7 +65,7 @@
                 <td><%= t.select :customer_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
                                             {:prompt => "Company Account", }, {:class => "select-box-ict"}%></td>
                 <td><%= t.text_field :amount %></td>
-                 <%= t.hidden_field :provider_id, :value => 9 %>
+                 <%= t.hidden_field :provider_id, :value => 7 %>
                  <%= t.hidden_field :description, :value => "Withdrawal" %>
               </tr>
             </tbody>

@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
 
   def tax_all
     @companies = CompanyAccount.all
-    @bank = CompanyAccount.find(9)
+    @bank = CompanyAccount.find(7)
 
     @companies.each do |c|
       if c.name != "The Bank"
@@ -42,7 +42,7 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.new
 
         @transaction.customer_id = c.id
-        @transaction.provider_id = 9
+        @transaction.provider_id = 7
         @transaction.amount = total_tax
         @transaction.description = "Standard daily taxation over company's balance."
 
@@ -74,7 +74,7 @@ class TransactionsController < ApplicationController
       deposit = @provider.update_attribute(:balance, provider_balance)
 
       # Add amount to cash box counter
-      @cashbox = CompanyAccount.find(9)
+      @cashbox = CompanyAccount.find(7)
       cashbox_balance = @cashbox.balance
       cashbox_balance += @transaction.amount
       #Change amount in table
@@ -93,7 +93,7 @@ class TransactionsController < ApplicationController
         withdraw = @customer.update_attribute(:balance, customer_balance)
 
         # Add amount to cash box counter
-        @cashbox = CompanyAccount.find(9)
+        @cashbox = CompanyAccount.find(7)
         cashbox_balance = @cashbox.balance
         cashbox_balance -= @transaction.amount
         #Change amount in table

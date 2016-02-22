@@ -7,12 +7,15 @@
           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
           <% if c.name != nil %>
             <h3><%= link_to c.name, company_account_path(c) %></h3>
+            <% if c.market != nil && c.numerator != nil %>
+              <h4><%= c.market + " #{c.numerator}" %></h4>
+            <% end %>
           <% else %>
-            <h3 class="text-muted">Company Name</h3>
+            <% if c.market != nil && c.numerator != nil %>
+              <h3><%= link_to "#{c.market}  #{c.numerator}", company_account_path(c) %></h3
+            <% end %>
           <% end %>
-          <% if c.market != nil && c.numerator != nil %>
-            <h4 ><%= c.market + " #{c.numerator}" %></h4>
-          <% end %>
+
           <p class="text-muted">Balance:</p>
           <% if c.balance >= 0 %>
             <p class="green-balance">$<%= c.balance.round(2) %></p>
