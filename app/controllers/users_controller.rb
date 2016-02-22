@@ -15,12 +15,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def register_user
+    @user = User.new
+  end
+
   def create
     @user = User.new(user_params)
+      if !@user.admin?
+        @user.balance = 1500
+      end
       if @user.save
-        log_in @user
         redirect_to @user
-        flash[:success] = "Welcome to the FELC Web App!"
       else
         render 'new'
       end
@@ -49,7 +54,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :company_account_id)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :company_account_id, :admin, :balance)
   end
 
   #Before filters

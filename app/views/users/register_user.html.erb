@@ -1,0 +1,80 @@
+<% provide(:title, "Register User") %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'static_pages', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+     <% end %>
+      <%= render 'layouts/header' %>
+        <div class="row">
+          <h1>Sign Up</h1>
+          <div class="site-wrapper">
+            <% flash.each do |message_type, message| %>
+             <div class="alert alert-<%= message_type %>"><%= message %></div>
+           <% end %>
+            <div class="site-wrapper-inner">
+              <div class="cover-container">
+                <div class="masthead clearfix">
+                </div>
+              <div class="inner cover">
+                <div class="row">
+                  <center><div class="panel panel-primary registration-panel">
+                    <div class="panel-heading">
+                      <h3 class="panel-title", style="text-align: center">Register User</h3>
+                    </div>
+                    <div class="panel-body">
+                      <%= form_for @user do |f| %>
+                        <%= render 'shared/error_messages' %>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Name:</th>
+                            <th>Email:</th>
+                            <th>Password:</th>
+                            <th>Confirm Password:</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <td> <%= f.text_field :name, :class => "registration-field" %></td>
+                          <td> <%= f.email_field :email, :class => "registration-field" %></td>
+                          <td><%= f.password_field :password, :class => "registration-field" %></td>
+                          <td><%= f.password_field :password_confirmation, :class => "registration-field" %></td>
+                        </tbody>
+                      </table>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Role:</th>
+                            <th>Company:</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <td><%= f.select :admin, options_for_select([["Participant", 0], ["Staff", 1]]),
+                                                        {:prompt => "Select Role..." }, {:class => "select-box-ict"}%></td>
+                          <td><%= f.select :company_account_id, options_from_collection_for_select(CompanyAccount.all.order(:id), :id, :name),
+                                                      {:prompt => "Select Company..." }, {:class => "select-box-ict"} %></td>
+                        </tbody>
+                      </table>
+                      <%= f.submit "Create new account", class: "btn btn-primary sign-up-button", style: "width: 100%" %>
+                    <% end %>
+                    </div>
+                  </div></center>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html>

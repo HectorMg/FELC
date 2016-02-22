@@ -130,6 +130,7 @@ footer {
 aside {
   section.user_info {
     margin-top: 20px;
+    text-align: center;
   }
   section {
     padding: 10px 0;
@@ -151,6 +152,10 @@ aside {
       margin-top: 0px;
     }
   }
+}
+
+.user-data{
+  text-align: center;
 }
 
 .gravatar {
@@ -258,4 +263,20 @@ label{
   h4{
     font-size: 1.5em;
   }
+}
+
+
+/* User registration form */
+
+.registration-panel{
+  width: 80%;
+}
+
+.registration-field{
+  width: 100%;
+}
+
+
+.select-box-ict{
+  width: 100%;
 }

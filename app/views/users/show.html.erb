@@ -4,6 +4,8 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'static_pages', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'dashboard', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bank_system', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -13,16 +15,56 @@
        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
      <% end %>
       <%= render 'layouts/header' %>
-        <div class="row">
-          <aside class="col-md-4">
-            <section class="user_info">
-              <h1>
-                <%= gravatar_for @user %>
-                <%= @user.name %>
-              </h1>
-            </section>
-          </aside>
+      <div class="company-page">
+        <!-- Title -->
+          <% if @user.name != nil %>
+            <h1><%= @user.name %></h1>
+          <% end %>
+        <!-- End Title -->
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <!-- Panel -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @user.name %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-4 placeholder">
+                  <%= gravatar_for @user %>
+                </div>
+                <div class="col-sm-4" style="text-align: left">
+                  <h4><strong>Name: </strong></h4>
+                  <h5><%= @user.name %></h5>
+                  <h4><strong>Email Address: </strong></h4>
+                  <h5><%= @user.email %></h5>
+                  <h4><strong>Account Type: </strong></h4>
+                  <% if !@user.admin?%>
+                    <h5>Participant</h5>
+                  <% else %>
+                    <h5>Staff</h5>
+                  <% end %>
+                </div>
+                <div class="col-sm-4" style="text-align: left">
+                  <% if @user.company_account_id%>
+                    <h4><strong>Company: </strong></h4>
+                    <h5><%= CompanyAccount.find(@user.company_account_id).name %></h5>
+                  <% end %>
+                  <h4><strong>Personal Balance: </strong></h4>
+
+                  <h5>$<%= @user.balance.round(2) %></h5>
+                  <% if staff? %>
+                    <%= link_to 'Edit User Attributes', edit_user_path(@user), :class => "btn btn-md btn-primary", :style => "width: 100%" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="col-sm-2"></div>
+      </div>
+      </div>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
     </div>

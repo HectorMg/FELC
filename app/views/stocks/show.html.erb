@@ -1,38 +1,38 @@
 <% provide(:title, "#{@stock.name} Information") %>
 <div class="company-page">
-<!-- Title -->
-  <% if @stock.name != nil %>
-    <h1><%= @stock.name + " Information" %></h1>
-  <% end %>
-<!-- End Title -->
-<!-- Panel -->
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= @stock.name %></h3>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-3 placeholder">
-        <%= image_tag("#{@stock.abbrev}", :width => 150, :height => 150, :class => "img-responsive", :alt => "Generic placeholder thumbnail" ) %>
-      </div>
-      <div class="col-sm-5" style="text-align: left">
-        <h4><strong>Name: </strong></h4>
-        <h5><%= @stock.name %></h5>
-        <h4><strong>Current Share Price: </strong></h4>
-        <h5>$<%= @stock.price.round(2) %></h5>
-        <h4><strong>Previous Share Price: </strong></h4>
-        <h5>$<%= @stock.previous_price.round(2) %></h5>
-      </div>
-      <div class="col-sm-4">
-        <h4><strong>Available Shares: </strong></h4>
-        <h5><%= @stock.quantity %></h5>
-        <h4><strong>Market Capitalization: </strong></h4>
-        <h5>$<%= @stock.market_cap.round(2) %></h5>
-        <% if staff? %>
-          <%= link_to 'Edit Stock Attributes', edit_stock_path, :class => "btn btn-lg btn-primary", :style => "width: 100%" %>
-        <% end %>
+  <!-- Title -->
+    <% if @stock.name != nil %>
+      <h1><%= @stock.name + " Information" %></h1>
+    <% end %>
+  <!-- End Title -->
+  <!-- Panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @stock.name %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-3 placeholder">
+          <%= image_tag("#{@stock.abbrev}", :width => 150, :height => 150, :class => "img-responsive", :alt => "Generic placeholder thumbnail" ) %>
+        </div>
+        <div class="col-sm-5" style="text-align: left">
+          <h4><strong>Name: </strong></h4>
+          <h5><%= @stock.name %></h5>
+          <h4><strong>Current Share Price: </strong></h4>
+          <h5>$<%= @stock.price.round(2) %></h5>
+          <h4><strong>Previous Share Price: </strong></h4>
+          <h5>$<%= @stock.previous_price.round(2) %></h5>
+        </div>
+        <div class="col-sm-4">
+          <h4><strong>Available Shares: </strong></h4>
+          <h5><%= @stock.quantity %></h5>
+          <h4><strong>Market Capitalization: </strong></h4>
+          <h5>$<%= @stock.market_cap.round(2) %></h5>
+          <% if staff? %>
+            <%= link_to 'Edit Stock Attributes', edit_stock_path, :class => "btn btn-lg btn-primary", :style => "width: 100%" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

@@ -11,15 +11,24 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",      home_path %></li>
+        <!-- <li><%#= link_to "Home",      home_path %></li> -->
         <li><%= link_to "Company",   companies_path %></li>
         <li><%= link_to "Schedule",  schedule_path %></li>
         <li><%= link_to "Manual",    manual_path %></li>
         <% if logged_in? %>
-        <li><%= link_to 'Users', users_path %></li>
           <% if staff? %>
             <li><%= link_to 'Bank', bank_path %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Users <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'All users', users_path %></li>
+                <li><%= link_to 'Registration', register_user_path %></li>
+              </ul>
+            </li>
           <% else %>
+            <li><%= link_to 'Users', users_path %></li>
             <li><%= link_to 'Bank', company_bank_path %></li>
           <% end %>
         <li class="dropdown">
