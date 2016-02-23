@@ -9,6 +9,14 @@
   <% else %>
     <h1><%= base_company(@company_account) %></h1>
   <% end %>
+
+  <% if current_user.admin? %>
+     <center>
+       <%= link_to "Delete Company", @company_account, :class => "btn btn-md btn-danger submit-transaction",
+                            method: :delete,
+                            data: { confirm: "You sure?" } %>
+     </center>
+ <% end %>
 <!-- End Title -->
 
 <!-- Transactions Exclusive to this company -->

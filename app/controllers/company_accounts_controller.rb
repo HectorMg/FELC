@@ -2,6 +2,12 @@ class CompanyAccountsController < ApplicationController
   def index
   end
 
+  def destroy
+    CompanyAccount.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to 'bank_system/index'
+  end
+
   def show
     @company_account = CompanyAccount.find(params[:id])
     @staffs = Staff.all
