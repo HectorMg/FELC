@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   belongs_to :company_account
   has_many :user_transactions
 
+  scope :participants, -> { where :admin => false }
 
     def self.digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
