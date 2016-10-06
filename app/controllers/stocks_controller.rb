@@ -3,6 +3,7 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock.all
+    @participants = User.all
   end
 
   def show

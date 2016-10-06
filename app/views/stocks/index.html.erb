@@ -1,50 +1,77 @@
 <% provide(:title, "Stock Market Information") %>
 <!-- Companies -->
-  <div class="general-bank-area">
-    <h2> Stock Market Information</h2>
-    <div class="row placeholders">
-      <% @stocks.order(:id).each do |s| %>
-        <div class="col-xs-6 col-sm-3 placeholder company-card-wrapper">
-          <div class="company-card-inner">
-            <%= image_tag("#{s.abbrev}", :width => 150, :height => 150, :class => "img-responsive", :alt => "Generic placeholder thumbnail" ) %>
-            <% if s.name != nil %>
-              <h3><%= link_to s.name, s, :target => "_blank" %></h3>
-            <% else %>
-              <h3 class="text-muted">Stock Name</h3>
-            <% end %>
-            <% if s.price != nil && s.previous_price != nil %>
+<div class="general-bank-area">
+  <h2> Stock Market Information</h2>
+  <div class="row placeholders">
+    <% @stocks.order(:id).each do |s| %>
+      <div class="col-xs-6 col-sm-3 placeholder company-card-wrapper">
+        <div class="company-card-inner">
+          <%= image_tag("#{s.abbrev}", :width => 150, :height => 150, :class => "img-responsive", :alt => "Generic placeholder thumbnail" ) %>
+          <% if s.name != nil %>
+            <h3><%= link_to s.name, s, :target => "_blank" %></h3>
+          <% else %>
+            <h3 class="text-muted">Stock Name</h3>
+          <% end %>
+          <% if s.price != nil && s.previous_price != nil %>
             <!-- Percentage increase/drop in price per share -->
-              <% if s.previous_price == 0 %>
-                <h3>--</h3>
-              <% else %>
-                <% pChange = ((s.price - s.previous_price) / s.previous_price) * 100 %>
+            <% if s.previous_price == 0 %>
+              <h3>--</h3>
+            <% else %>
+              <% pChange = ((s.price - s.previous_price) / s.previous_price) * 100 %>
 
-                <% if pChange > 0 %>
-                  <h3 style="color: green">↑<%= pChange.round(2) %>%</h3>
-                <% elsif pChange < 0 %>
-                  <h3 style="color: red">↓<%= (pChange.round(2)) * -1 %>%</h3>
-                <% else %>
-                  <h3><%= pChange.round(2)%>%</h3>
-                <% end %>
+              <% if pChange > 0 %>
+                <h3 style="color: green">↑<%= pChange.round(2) %>%</h3>
+              <% elsif pChange < 0 %>
+                <h3 style="color: red">↓<%= (pChange.round(2)) * -1 %>%</h3>
+              <% else %>
+                <h3><%= pChange.round(2)%>%</h3>
               <% end %>
+            <% end %>
 
             <!-- Current Share Value -->
-              <p class="text-muted">Current Share Value:</p>
-              <h4>$<%= s.price %></h4>
-              <!-- Previous Share Value -->
-              <p class="text-muted">Previous Share Value:</p>
-              <h4>$<%= s.previous_price %></h4>
-            <% end %>
-            <!-- Market Cap -->
-            <p class="text-muted">Market Cap:</p>
-            <% if s.market_cap >= 0 %>
-              <p class="green-balance">$<%= s.market_cap %></p>
-            <% else %>
-              <p class="red-balance">-$<%= (s.market_cap*-1) %></p>
-            <% end %>
-          </div>
+            <p class="text-muted">Current Share Value:</p>
+            <h4>$<%= s.price %></h4>
+            <!-- Previous Share Value -->
+            <p class="text-muted">Previous Share Value:</p>
+            <h4>$<%= s.previous_price %></h4>
+          <% end %>
+          <!-- Market Cap -->
+          <p class="text-muted">Market Cap:</p>
+          <% if s.market_cap >= 0 %>
+            <p class="green-balance">$<%= s.market_cap %></p>
+          <% else %>
+            <p class="red-balance">-$<%= (s.market_cap*-1) %></p>
+          <% end %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
-<!-- End Companies -->
+  <h2> Stock Rankings</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="transaction-integer-cell">ID</th>
+        <th class="transaction-text-cell">Name</th>
+        <th class="transaction-integer-cell">Company</th>
+        <th class="transaction-integer-cell">Balance</th>
+      </tr>
+    </thead>
+  </table>
+  <div class="bank-table">
+    <table class="table table-striped">
+      <tbody>
+        <% @participants.sort_by { |user| user.balance }.each do |p|  %>
+          <tr>
+            <td class="transaction-integer-cell"><%= p.id %></td>
+            <td class="transaction-text-cell">
+              <%= p.name %>
+            </td>
+            <td class="transaction-integer-cell"><%= p.company_account.name %></td>
+            <td class="transaction-integer-cell">$<%= number_with_precision(p.balance, :precision => 2) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <!-- End Companies -->
+

@@ -75,20 +75,17 @@ ActiveRecord::Schema.define(version: 20160217073557) do
 
   create_table "transactions", force: :cascade do |t|
     t.text     "description"
+    t.integer  "provider_id"
+    t.integer  "customer_id"
     t.text     "customer_role"
     t.text     "provider_role"
     t.text     "customer_consequence"
     t.text     "provider_consequence"
     t.text     "valid_through"
     t.float    "amount"
-    t.integer  "provider_id"
-    t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "transactions", ["customer_id"], name: "index_transactions_on_customer_id"
-  add_index "transactions", ["provider_id"], name: "index_transactions_on_provider_id"
 
   create_table "user_transactions", force: :cascade do |t|
     t.string   "description"
@@ -108,11 +105,6 @@ ActiveRecord::Schema.define(version: 20160217073557) do
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin",              default: false
-    t.string   "activation_digest"
-    t.boolean  "activated",          default: false
-    t.datetime "activated_at"
-    t.string   "reset_digest"
-    t.datetime "reset_sent_at"
     t.integer  "company_account_id"
     t.float    "balance"
     t.integer  "s1"
