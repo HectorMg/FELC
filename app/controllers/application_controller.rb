@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       p.s6 = 0
       p.s7 = 0
       p.s8 = 0
-      p.save 
+      p.save
     end
 
     #Reset all Transactions
