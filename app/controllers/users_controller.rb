@@ -23,6 +23,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if !@user.admin?
         @user.balance = 1500
+      else
+        @user.balance = 0
       end
       if @user.save
         redirect_to @user
