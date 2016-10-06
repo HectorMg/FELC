@@ -60,7 +60,7 @@
   <div class="bank-table">
     <table class="table table-striped">
       <tbody>
-        <% @participants.sort_by { |user| user.balance }.each do |p|  %>
+        <% @participants.sort_by { |user| -user.balance }.each do |p|  %>
           <tr>
             <td class="transaction-integer-cell"><%= p.id %></td>
             <td class="transaction-text-cell">
