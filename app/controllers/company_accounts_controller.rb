@@ -20,4 +20,13 @@ class CompanyAccountsController < ApplicationController
       end
     end
   end
+
+  def reset_accounts
+    @companies = CompanyAccount.all
+    @companies.each do |company|
+      company.balance = 1500
+      company.save
+    end
+    redirect_to '/bank'
+  end
 end

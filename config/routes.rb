@@ -48,4 +48,13 @@ Rails.application.routes.draw do
   resources :user_transactions
   resources :copyrights
   resources :properties
+
+  #Reseters
+  get 'bank_settings' => "bank_system#settings"
+  delete 'reset_accounts' => "company_accounts#reset_accounts"
+  delete 'reset_user_accounts' => "users#reset_accounts"
+  delete 'reset_transactions'   => "transactions#reset_transactions"
+
+  #Event Reset
+  delete 'reset_event' => "application#reset_event"
 end

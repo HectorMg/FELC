@@ -22,10 +22,14 @@ class BankSystemController < ApplicationController
     @stock = Stock.all
   end
 
-# Before action filters
+  def settings
 
-def admin_user
-  redirect_to(company_bank_url) unless current_user.admin?
-end
+  end
+
+  # Before action filters
+
+  def admin_user
+    redirect_to(company_bank_url) unless current_user.admin?
+  end
 
 end

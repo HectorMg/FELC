@@ -74,7 +74,7 @@ class TransactionsController < ApplicationController
       deposit = @provider.update_attribute(:balance, provider_balance)
 
       # Add amount to cash box counter
-      @cashbox = CompanyAccount.find(7)
+      @cashbox = CompanyAccount.find(9)
       cashbox_balance = @cashbox.balance
       cashbox_balance += @transaction.amount
       #Change amount in table
@@ -196,12 +196,18 @@ class TransactionsController < ApplicationController
     elsif type == "Property"
       if completed_property_sale
         flash[:success] = ""
+        @properties = Property.all
         render 'new_property_purchase'
       else
         flash[:error] = ""
         render 'new_property_purchase'
       end
     end
+  end
+
+  def reset_transactions
+    Transaction.delete_all
+    redirect_to :back
   end
 
   # Before action filters

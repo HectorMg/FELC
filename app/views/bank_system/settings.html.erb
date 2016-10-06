@@ -1,0 +1,20 @@
+<div class="general-bank-area">
+  <h2>Settings</h2>
+
+  <div class="container">
+
+    <h3>Database Resets</h3>
+    <div class="row">
+      <h4>All Transactions</h4>
+      <%= link_to 'Reset Transactions', reset_transactions_path, :class=>"btn btn-lg btn-danger", :method=>"delete" %>
+    </div>
+    <div class="row">
+      <h4>Companies</h4>
+      <%= link_to 'Reset Company Accounts', reset_accounts_path, :class=>"btn btn-lg btn-danger", :method=>"delete" %>
+    </div>
+    <div class="row">
+      <h4>Set up for Event</h4>
+      <%= link_to 'Reset Event', reset_event_path, :class=>"btn btn-lg btn-danger", :method=>"delete" %>
+    </div>
+  </div>
+</div>

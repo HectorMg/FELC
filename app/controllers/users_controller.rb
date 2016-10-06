@@ -53,6 +53,15 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def reset_accounts
+    @participants = User.participants
+    @participants.each do |p|
+      p.balance = 1500
+      p.save
+    end
+    redirect_to '/stocks'
+  end
+
   private
 
   def user_params
