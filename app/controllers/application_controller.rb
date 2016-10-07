@@ -50,7 +50,11 @@ class ApplicationController < ActionController::Base
       s.market_cap = 125000
       s.save
     end
+
+    #User Transactions
+    UserTransaction.delete_all
     redirect_to "/bank"
+
   end
 
 end
