@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
       s.market_cap = 125000
       s.save
     end
-    redirect_to "bank"
+    redirect_to "/bank"
   end
 
 end
