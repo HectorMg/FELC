@@ -1,0 +1,118 @@
+/*
+ * Base structure
+ */
+/* Move down content because we have a fixed navbar that is 50px tall */
+/* line 9, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+body {
+  padding-top: 50px;
+}
+
+/*
+ * Global add-ons
+ */
+/* line 18, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.sub-header {
+  padding-bottom: 10px;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+/* line 26, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+/* Hide for mobile, show later */
+/* line 35, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  /* line 39, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: #ecf0f1;
+    border-right: 1px solid #eee;
+    margin-top: -1px;
+  }
+}
+/* Sidebar navigation */
+/* line 56, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.nav-sidebar {
+  margin-right: -21px;
+  /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+
+/* line 61, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #3498db;
+}
+/* line 65, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.nav-sidebar > li > a:hover {
+  color: #fff;
+  background-color: #3498db;
+}
+
+/*
+ * Main content
+ */
+/* line 83, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.main {
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  /* line 87, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+/* line 92, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.main .page-header {
+  margin-top: 0;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+/* line 101, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* line 105, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.placeholders h4 {
+  margin-bottom: 0;
+}
+
+/* line 108, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.placeholder {
+  margin-bottom: 20px;
+}
+
+/* line 111, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/dashboard.css.scss */
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}

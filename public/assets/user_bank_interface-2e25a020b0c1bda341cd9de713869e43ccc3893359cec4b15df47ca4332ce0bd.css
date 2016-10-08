@@ -1,0 +1,19 @@
+/* line 1, /Users/HectorMg/workspace/FELC/app/assets/stylesheets/user_bank_interface.css.scss */
+.user-bank-trans-panel {
+  height: 61vh;
+}
+
+/* line 5, /Users/HectorMg/workspace/FELC/app/assets/stylesheets/user_bank_interface.css.scss */
+.trans-panel-body {
+  height: 75%;
+}
+
+/* line 9, /Users/HectorMg/workspace/FELC/app/assets/stylesheets/user_bank_interface.css.scss */
+.trans-table {
+  height: 100%;
+}
+
+/* line 13, /Users/HectorMg/workspace/FELC/app/assets/stylesheets/user_bank_interface.css.scss */
+.properties-table {
+  overflow: scroll;
+}

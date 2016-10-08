@@ -1,0 +1,150 @@
+/* line 2, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+.contract-area {
+  padding-bottom: 50px;
+}
+
+/* line 6, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 18, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+body {
+  position: relative;
+  width: auto;
+  height: 29.7cm;
+  margin: 0 auto;
+  color: #001028;
+  background: #FFFFFF;
+}
+
+/* line 35, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#logo {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+/* line 40, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#logo img {
+  width: 300px;
+}
+
+/* line 45, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+h1 {
+  border-top: 1px solid  #5D6975;
+  border-bottom: 1px solid  #5D6975;
+  color: #5D6975;
+  font-size: 2.4em;
+  line-height: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+/* line 56, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#project {
+  float: left;
+}
+
+/* line 60, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#project span {
+  color: #5D6975;
+  text-align: right;
+  width: 52px;
+  margin-right: 10px;
+  display: inline-block;
+  font-size: 0.8em;
+}
+
+/* line 69, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#company {
+  float: right;
+  text-align: right;
+}
+
+/* line 74, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#project div,
+#company div {
+  white-space: nowrap;
+}
+
+/* line 79, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+/* line 88, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table th,
+table td {
+  text-align: left;
+}
+
+/* line 93, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table th {
+  padding: 5px 20px;
+  color: #5D6975;
+  border-bottom: 1px solid #C1CED9;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+/* line 101, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table .service,
+table .desc {
+  text-align: left;
+}
+
+/* line 106, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table td {
+  padding: 20px;
+  text-align: left;
+}
+
+/* line 111, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table td.service,
+table td.desc {
+  vertical-align: top;
+}
+
+/* line 116, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.2em;
+}
+
+/* line 122, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+table td.grand {
+  border-top: 1px solid #5D6975;
+}
+
+/* line 126, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#notices .notice {
+  color: #5D6975;
+  font-size: 1.2em;
+}
+
+/* line 131, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#companysig {
+  height: auto;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+/* line 137, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#pressig {
+  height: auto;
+  text-align: center;
+  vertical-align: bottom;
+  margin-top: 100px;
+}
+
+/* line 144, /Users/HectorMg/workspace/FELC/vendor/assets/stylesheets/contract.css.scss */
+#last {
+  border-bottom: none;
+}
