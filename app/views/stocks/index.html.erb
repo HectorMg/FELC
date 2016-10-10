@@ -60,15 +60,17 @@
   <div class="bank-table">
     <table class="table table-striped">
       <tbody>
-        <% @participants.sort_by { |user| -user.balance }.each do |p|  %>
-          <tr>
-            <td class="transaction-integer-cell"><%= p.id %></td>
-            <td class="transaction-text-cell">
-              <%= p.name %>
-            </td>
-            <td class="transaction-integer-cell"><%= p.company_account.name %></td>
-            <td class="transaction-integer-cell">$<%= number_with_precision(p.balance, :precision => 2) %></td>
-          </tr>
+        <% if !@participants.empty? %>
+          <% @participants.sort_by { |user| -user.balance }.each do |p|  %>
+            <tr>
+              <td class="transaction-integer-cell"><%= p.id %></td>
+              <td class="transaction-text-cell">
+                <%= p.name %>
+              </td>
+              <td class="transaction-integer-cell"><%= p.company_account.name %></td>
+              <td class="transaction-integer-cell">$<%= number_with_precision(p.balance, :precision => 2) %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
