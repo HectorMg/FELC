@@ -3,7 +3,7 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock.all
-    @participants = User.participants
+    @participants = User.participants.order(:balance => :desc)
   end
 
   def show
